@@ -2,29 +2,29 @@
 
 import React from "react";
 import { useState } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import Image from "next/image";
 import Logo from "../images/logo.png";
 
-export const GPTHeader = ({ currentPage }: { currentPage: string }) => {
+export const GPTHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  const CustomLink = ({ page, href }: { page: string; href: string }) => {
-    const isActive = page === currentPage;
+  // const CustomLink = ({ page, href }: { page: string; href: string }) => {
+  //   const isActive = page === currentPage;
 
-    const inactiveStyle = "self-center padding-5";
-    const activeStyle = "py-0.5 px-3 navbarColor self-center rounded-2xl";
+  //   const inactiveStyle = "self-center padding-5";
+  //   const activeStyle = "py-0.5 px-3 navbarColor self-center rounded-2xl";
 
-    return (
-      <Link className={isActive ? activeStyle : inactiveStyle} href={href}>
-        {page}
-      </Link>
-    );
-  };
+  //   return (
+  //     <Link className={isActive ? activeStyle : inactiveStyle} href={href}>
+  //       {page}
+  //     </Link>
+  //   );
+  // };
 
   return (
     <header className="container mx-auto flex flex-col py-4 md:py-8 bg-[#E9E7DB] margin-pc">

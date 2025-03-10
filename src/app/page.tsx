@@ -85,7 +85,15 @@ const Second = () => {
   );
 };
 
-const Card = ({ id, title, description }) => {
+const Card = ({
+  id,
+  title,
+  description,
+}: {
+  id: string;
+  title: string;
+  description: string;
+}) => {
   return (
     <div className="flex flex-col relative p-6 min-h-[44vh] md:w-90 bg-[#E9E7DB] rounded-3xl">
       <div className="flex h-17 w-[30%] max-w-20 mb-10 rounded-3xl items-center justify-center bg-[#69735B]">
@@ -184,7 +192,10 @@ const Fifth = () => {
       <div className="container mx-auto">
         <div className="flex flex-col justify-center md:flex-row px-2">
           <div className="h-auto max-h-182 w-full md:max-w-160 mb-4 md:mb-0 bg-[#E9E7DB] overflow-hidden rounded-4xl">
-            <img src="https://s3-alpha-sig.figma.com/img/2e6a/73ba/51bfe7a17b2eb6297a79f3048a311dc7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ONES4GfgKQwfDvR6vheGkuG0ParlTodPLYZRchFtVzAh7ZZwcef5dBYIvDo80rvp7RnuSGlu0Gadi3DiLA4fhBXVaQUQIjW2lLFP-vJMJj3HMZWM9ZjBPBHKQkzbAU6d4q-11-tti8ZfyD1HRrQWdXcQRhbYo0EE882sP76OivX-ilE~JtSfgadWy1ceCW0c0oDTcH2JG-QriSGO5yVb~i1gIpXG5MEUq6Wo7XOKh3phakGTPkseUSWSlpGOku2iUSaC1xrXKpky5jMmNw4Dw7xogWdnvkmJw9HhVgeamrQz8aGcshwXgirQN960fjvcnwO5PmdindsFfze1qtll0g__"></img>
+            <Image
+              src="https://s3-alpha-sig.figma.com/img/2e6a/73ba/51bfe7a17b2eb6297a79f3048a311dc7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ONES4GfgKQwfDvR6vheGkuG0ParlTodPLYZRchFtVzAh7ZZwcef5dBYIvDo80rvp7RnuSGlu0Gadi3DiLA4fhBXVaQUQIjW2lLFP-vJMJj3HMZWM9ZjBPBHKQkzbAU6d4q-11-tti8ZfyD1HRrQWdXcQRhbYo0EE882sP76OivX-ilE~JtSfgadWy1ceCW0c0oDTcH2JG-QriSGO5yVb~i1gIpXG5MEUq6Wo7XOKh3phakGTPkseUSWSlpGOku2iUSaC1xrXKpky5jMmNw4Dw7xogWdnvkmJw9HhVgeamrQz8aGcshwXgirQN960fjvcnwO5PmdindsFfze1qtll0g__"
+              alt="Imagem"
+            ></Image>
           </div>
           <div className="flex flex-col justify-end h-auto max-h-182 md:max-w-160 px-2 md:px-8 w-full">
             <p className="font-semibold text-3xl text-[#E9E7DB] mb-2">
@@ -218,7 +229,15 @@ const Fifth = () => {
   );
 };
 
-const FAQItem = ({ question, answer, hasNext = true }) => {
+const FAQItem = ({
+  question,
+  answer,
+  hasNext = true,
+}: {
+  question: string;
+  answer: string;
+  hasNext: boolean;
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -252,16 +271,19 @@ const Sixth = () => {
       question: "Quando devo procurar tratamento?",
       answer:
         "Se você está enfrentando dificuldades emocionais, comportamentais ou de relacionamento que afetam sua qualidade de vida, é um bom momento para procurar ajuda profissional.",
+      hasNext: true,
     },
     {
       question: "Onde ocorrem os atendimentos?",
       answer:
         "Os atendimentos podem ser realizados presencialmente ou online, dependendo da sua preferência e disponibilidade.",
+      hasNext: true,
     },
     {
       question: "Qual a duração das sessões?",
       answer:
         "As sessões geralmente duram entre 50 minutos a 1 hora, dependendo do tipo de atendimento e da necessidade do paciente.",
+      hasNext: true,
     },
     {
       question: "Qual o valor da consulta?",
@@ -291,30 +313,6 @@ const Sixth = () => {
             ))}
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
-
-const Seventhaa = () => {
-  const SessionButton = () => {
-    return (
-      <button
-        onClick={() => window.open("https://wa.me/5519991999068", "_blank")}
-        className="text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[25%] bg-[#505568] rounded-3xl cursor-pointer"
-      >
-        <a className="text-[#E9E7DB]">Entrar em contato pelo WhatsApp</a>
-      </button>
-    );
-  };
-
-  return (
-    <section className="p-4 py-16 pt-8">
-      <div className="container mx-auto p-4 flex flex-col items-center">
-        <p className="font-bold text-3xl text-[#505568] mb-8 md:max-w-[24ch] text-center">
-          Gostaria de saber mais ou ficou com dúvidas?
-        </p>
-        <SessionButton />
       </div>
     </section>
   );
@@ -357,7 +355,7 @@ export default function Home() {
   return (
     <main className="h-screen">
       <header>
-        <GPTHeader currentPage="teste" />
+        <GPTHeader />
       </header>
       <div className="min-h-screen">
         <First />
