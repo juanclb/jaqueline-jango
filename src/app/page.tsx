@@ -10,6 +10,7 @@ import Jaqueline2 from "../images/jaqueline2.png";
 import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
 import GPTHeader from "./header.tsx";
 import "public/fonts/fontstyle.css";
+import { Head } from "next/document";
 
 const First = () => {
   return (
@@ -354,41 +355,51 @@ const Seventh = () => {
 
 export default function Home() {
   return (
-    <main className="h-screen">
-      <header>
-        <GPTHeader />
-      </header>
-      <div className="min-h-screen">
-        <First />
-        <Second />
-        <Third />
-        <Fourth />
-        <Fifth />
-        <Sixth />
-        <Seventh />
-      </div>
-      <footer className="flex md:items-center bg-[#505568] md:h-36">
-        <div className="container mx-auto">
-          <div className="flex flex-col gap-4 md:gap-0 py-8 md:py-0 md:flex-row justify-between text-[#E9E7DB] items-center text-md">
-            <a className="text-center whitespace-pre-line">
-              Copyright © 2025{"\n"}Jaqueline Jango - Psicóloga
-            </a>
-            <a href="tel:+5519991999068">(19) 99199-9068</a>
-            <button
-              onClick={() =>
-                window.open("https://instagram.com/jaquejango", "_blank")
-              }
-            >
-              @jaquejango
-            </button>
-            <a className="text-center whitespace-pre-line">
-              Rua Jerônimo Batista Fabiano, 200c{"\n"}Hortolândia - SP,
-              13185-301
-            </a>
-            <Icon />
-          </div>
+    <>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet"
+        ></link>
+      </Head>
+      <main className="h-screen">
+        <header>
+          <GPTHeader />
+        </header>
+        <div className="min-h-screen">
+          <First />
+          <Second />
+          <Third />
+          <Fourth />
+          <Fifth />
+          <Sixth />
+          <Seventh />
         </div>
-      </footer>
-    </main>
+        <footer className="flex md:items-center bg-[#505568] md:h-36">
+          <div className="container mx-auto">
+            <div className="flex flex-col gap-4 md:gap-0 py-8 md:py-0 md:flex-row justify-between text-[#E9E7DB] items-center text-md">
+              <a className="text-center whitespace-pre-line">
+                Copyright © 2025{"\n"}Jaqueline Jango - Psicóloga
+              </a>
+              <a href="tel:+5519991999068">(19) 99199-9068</a>
+              <button
+                onClick={() =>
+                  window.open("https://instagram.com/jaquejango", "_blank")
+                }
+              >
+                @jaquejango
+              </button>
+              <a className="text-center whitespace-pre-line">
+                Rua Jerônimo Batista Fabiano, 200c{"\n"}Hortolândia - SP,
+                13185-301
+              </a>
+              <Icon />
+            </div>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }
