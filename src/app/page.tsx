@@ -180,7 +180,7 @@ const Fourth = () => {
         <p className="font-bold text-3xl text-[#69735B] mb-8 md:max-w-[24ch] text-center">
           Assuma o controle da sua vida e conquiste sua estabilidade!
         </p>
-        <p className="text-xl text-[#4F5A41] mb-8">
+        <p className="text-xl text-center text-[#4F5A41] mb-8">
           Vamos em busca de alcançar uma vida{" "}
           <a className="font-bold ">mais leve, estável e feliz?</a>
         </p>

@@ -80,8 +80,10 @@ export const GPTHeader = () => {
         <nav className="mt-4 md:mt-0">
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
             <li>Início</li>
-            <li>Categorias</li>
-            <li>Contato</li>
+            <li>Onde ajudamos</li>
+            <li>Como ajudamos</li>
+            <li>Sobre mim</li>
+            <li>Agendar sessão</li>
           </ul>
         </nav>
       )}
