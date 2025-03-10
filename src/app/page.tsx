@@ -1,5 +1,4 @@
 "use client";
-import "../app/globals.css";
 
 import Image from "next/image";
 import StressedSvg from "../images/Stressed.js";
@@ -10,20 +9,6 @@ import Jaqueline2 from "../images/jaqueline2.png";
 
 import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
 import GPTHeader from "./header.tsx";
-
-import { Montserrat, Urbanist } from "next/font/google";
-
-const montserrat = Montserrat({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-montserrat",
-});
-
-const urbanist = Urbanist({
-  subsets: ["latin"],
-  variable: "--font-urbanist",
-});
 
 const First = () => {
   return (
