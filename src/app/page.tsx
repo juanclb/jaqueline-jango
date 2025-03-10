@@ -1,5 +1,4 @@
 "use client";
-
 import "../app/globals.css";
 
 import Image from "next/image";
@@ -211,6 +210,8 @@ const Fifth = () => {
             <Image
               src="https://s3-alpha-sig.figma.com/img/2e6a/73ba/51bfe7a17b2eb6297a79f3048a311dc7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ONES4GfgKQwfDvR6vheGkuG0ParlTodPLYZRchFtVzAh7ZZwcef5dBYIvDo80rvp7RnuSGlu0Gadi3DiLA4fhBXVaQUQIjW2lLFP-vJMJj3HMZWM9ZjBPBHKQkzbAU6d4q-11-tti8ZfyD1HRrQWdXcQRhbYo0EE882sP76OivX-ilE~JtSfgadWy1ceCW0c0oDTcH2JG-QriSGO5yVb~i1gIpXG5MEUq6Wo7XOKh3phakGTPkseUSWSlpGOku2iUSaC1xrXKpky5jMmNw4Dw7xogWdnvkmJw9HhVgeamrQz8aGcshwXgirQN960fjvcnwO5PmdindsFfze1qtll0g__"
               alt="Imagem"
+              height={1920}
+              width={1080}
             ></Image>
           </div>
           <div className="flex flex-col justify-end h-auto max-h-182 md:max-w-160 px-2 md:px-8 w-full">
@@ -370,7 +371,7 @@ const Seventh = () => {
 export default function Home() {
   return (
     <>
-      <main className={`h-screen ${montserrat.variable} ${urbanist.variable}`}>
+      <main className={`h-screen`}>
         <header>
           <GPTHeader />
         </header>

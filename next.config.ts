@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
   // add images.pexels.com to the allowed domains
   images: {
-    domains: ["images.pexels.com"],
+    domains: ["figma.com", "s3-alpha-sig.figma.com", "images.pexels.com"],
   },
   webpack(config) {
     config.module.rules.push({
