@@ -9,6 +9,7 @@ import Jaqueline2 from "../images/jaqueline2.png";
 
 import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
 import GPTHeader from "./header.tsx";
+import "public/fonts/fontstyle.css";
 
 const First = () => {
   return (
