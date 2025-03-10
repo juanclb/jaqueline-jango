@@ -1,5 +1,7 @@
 "use client";
 
+import "../app/globals.css";
+
 import Image from "next/image";
 import StressedSvg from "../images/Stressed.js";
 import Icon from "../images/Icon.js";
@@ -9,8 +11,20 @@ import Jaqueline2 from "../images/jaqueline2.png";
 
 import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
 import GPTHeader from "./header.tsx";
-import "public/fonts/fontstyle.css";
-import { Head } from "next/document";
+
+import { Montserrat, Urbanist } from "next/font/google";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-montserrat",
+});
+
+const urbanist = Urbanist({
+  subsets: ["latin"],
+  variable: "--font-urbanist",
+});
 
 const First = () => {
   return (
@@ -356,15 +370,7 @@ const Seventh = () => {
 export default function Home() {
   return (
     <>
-      <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
-          rel="stylesheet"
-        ></link>
-      </Head>
-      <main className="h-screen">
+      <main className={`h-screen ${montserrat.variable} ${urbanist.variable}`}>
         <header>
           <GPTHeader />
         </header>
