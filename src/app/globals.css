@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #E9E7DB;
   --foreground: #171717;
 }
 
@@ -12,9 +12,9 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
+    --background: #E9E7DB;
     --foreground: #ededed;
   }
 }
@@ -22,5 +22,24 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Urbanist, Arial;
+}
+
+.bg-image {
+  background-image: url('https://s3-alpha-sig.figma.com/img/958e/c68e/53041ce647298a64afe815646f08a3b7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=bJOQrpsCAu0dLQw-cTCtS189ZILG1IkkIeoCQ0AHWsTTStECspgPh6TyM385PZjNlD1Gew5JgaYEOlsO-bDCCgMvMdAnN627Ia1PY8CPNOeaQyflMxsMrkiuTgtSm6Uden4mMuL6Fkoi86mKPaIuhuOqiOyYlgqM0IhR8VzZTtatljd0vXM2VyKQ6IklozAjGVaJUWPb8msEpuyzPG0dM5pC50fjLfDtSPpdqNb0pU0XiiVvQOkHywYko5JG8jqi737R~ap3WzE76sB7JbucFf5UYLrq5ic0PtElACz1ll8J6x33PSjSjvGEypMxwzPV7ZnsBnlJHlzBXraUqc~vrw__');
+  background-size: 30%;
+    /* Ajusta a imagem para cobrir toda a div */
+    background-position: top right;
+    /* Alinha a imagem no lado superior esquerdo */
+    background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .bg-image {
+    background-image: none;
+  }
+}
+
+.bg-gradient-to-t {
+  background: linear-gradient(to top, rgba(233, 231, 219, 1), rgba(233, 231, 219, 0));
 }
