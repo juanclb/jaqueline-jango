@@ -1,5 +1,7 @@
 "use client";
 
+// import "../app/globals.css";
+
 import Image from "next/image";
 import StressedSvg from "../images/Stressed.js";
 import Icon from "../images/Icon.js";
@@ -8,6 +10,8 @@ import Jaqueline from "../images/jaqueline.png";
 import Jaqueline2 from "../images/jaqueline2.png";
 
 import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
+import { IoIosArrowDown } from "react-icons/io";
+
 import GPTHeader from "./header.tsx";
 
 const First = () => {
@@ -36,7 +40,7 @@ const First = () => {
                 alt="Jaqueline"
                 className="relative z-10"
               />
-              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#E9E7DB] to-transparent z-20 pointer-events-none"></div>
+              <div className="absolute bottom-0 left-0 w-full h-1/2 bg-gradient-to-t from-[#E9E7DB] from-[10%] to-transparent z-20 pointer-events-none"></div>
             </div>
           </div>
         </div>
@@ -193,7 +197,9 @@ const Fifth = () => {
         <div className="flex flex-col justify-center md:flex-row px-2">
           <div className="h-auto max-h-182 w-full md:max-w-160 mb-4 md:mb-0 bg-[#E9E7DB] overflow-hidden rounded-4xl">
             <Image
-              src="https://s3-alpha-sig.figma.com/img/2e6a/73ba/51bfe7a17b2eb6297a79f3048a311dc7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ONES4GfgKQwfDvR6vheGkuG0ParlTodPLYZRchFtVzAh7ZZwcef5dBYIvDo80rvp7RnuSGlu0Gadi3DiLA4fhBXVaQUQIjW2lLFP-vJMJj3HMZWM9ZjBPBHKQkzbAU6d4q-11-tti8ZfyD1HRrQWdXcQRhbYo0EE882sP76OivX-ilE~JtSfgadWy1ceCW0c0oDTcH2JG-QriSGO5yVb~i1gIpXG5MEUq6Wo7XOKh3phakGTPkseUSWSlpGOku2iUSaC1xrXKpky5jMmNw4Dw7xogWdnvkmJw9HhVgeamrQz8aGcshwXgirQN960fjvcnwO5PmdindsFfze1qtll0g__"
+              src={
+                "https://s3-alpha-sig.figma.com/img/2e6a/73ba/51bfe7a17b2eb6297a79f3048a311dc7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ONES4GfgKQwfDvR6vheGkuG0ParlTodPLYZRchFtVzAh7ZZwcef5dBYIvDo80rvp7RnuSGlu0Gadi3DiLA4fhBXVaQUQIjW2lLFP-vJMJj3HMZWM9ZjBPBHKQkzbAU6d4q-11-tti8ZfyD1HRrQWdXcQRhbYo0EE882sP76OivX-ilE~JtSfgadWy1ceCW0c0oDTcH2JG-QriSGO5yVb~i1gIpXG5MEUq6Wo7XOKh3phakGTPkseUSWSlpGOku2iUSaC1xrXKpky5jMmNw4Dw7xogWdnvkmJw9HhVgeamrQz8aGcshwXgirQN960fjvcnwO5PmdindsFfze1qtll0g__"
+              }
               alt="Imagem"
               height={1920}
               width={1080}
@@ -301,8 +307,8 @@ const Sixth = () => {
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col justify-center items-center h-auto w-full mb-8 md:mb-0">
-            <p className="font-semibold text-3xl text-[#505568]">Perguntas</p>
-            <p className="font-semibold text-3xl text-[#505568]">Frequentes</p>
+            <p className="font-bold text-3xl text-[#505568]">Perguntas</p>
+            <p className="font-bold text-3xl text-[#505568]">Frequentes</p>
           </div>
           <div className="flex flex-col justify-center w-full h-auto px-4 md:px-0">
             {faqs.map((faq, index) => (
@@ -364,6 +370,11 @@ export default function Home() {
           <First />
           <Second />
           <Third />
+          <div className="absolute w-full flex justify-center">
+            <div className="flex items-center justify-center h-[100px] w-[100px] rounded-full bg-[#E9E7DB] mt-[-50px]">
+              <IoIosArrowDown size={60} color={"#69735B"} />
+            </div>
+          </div>
           <Fourth />
           <Fifth />
           <Sixth />
