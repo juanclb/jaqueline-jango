@@ -29,6 +29,9 @@ export const GPTHeader = () => {
   return (
     <header className="container mx-auto flex flex-col py-4 md:py-8 bg-[#E9E7DB] margin-pc">
       <div className="flex w-full justify-center">
+        <div className="ml-6 md:hidden">
+          <Image src={Logo} alt="Logo" />
+        </div>
         <div className="flex flex-row w-full justify-end md:justify-evenly">
           <div className="hidden md:flex w-full justify-evenly items-center">
             <Image src={Logo} alt="Logo" />

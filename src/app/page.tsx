@@ -4,6 +4,7 @@
 
 import Image from "next/image";
 import StressedSvg from "../images/Stressed.js";
+import WomanThinking from "../images/WomanThinking.js";
 import Icon from "../images/Icon.js";
 import { useState } from "react";
 import Jaqueline from "../images/jaqueline.png";
@@ -17,9 +18,9 @@ import GPTHeader from "./header.tsx";
 const First = () => {
   return (
     <>
-      <section className="p-4 py-16 md:pt-0">
+      <section className="p-4 py-8 md:py-16 md:pt-0">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col-reverse md:flex-row">
             <div className="flex flex-col justify-center w-full md:w-[40%] h-auto">
               <p className="font-[1000] text-4xl text-[#9D4931]">
                 Assuma o controle da sua vida e conquiste sua estabilidade!
@@ -52,35 +53,74 @@ const First = () => {
 const Second = () => {
   return (
     <>
-      <section className="p-4 py-16">
+      <section className="bg-[#505568] p-4 py-16">
         <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row">
+          <div className="flex flex-col-reverse md:flex-row">
             <div className="w-full md:w-[60%] h-auto">
-              <p className="font-bold text-3xl text-[#9D4931]">
-                Hoje é bem provável que você enfrente dificuldades como:
-              </p>
-              <p className="font-semibold text-xl text-[#9D4931] mt-10">
-                Oscilação de humor, irritabilidade, ansiedade, tristeza, fadiga,
-                distúrbios do sono, pensamentos repetitivos, culpa constante,
-                crises recorrentes e insegurança quanto ao futuro.
-              </p>
-              <p className="font-semibold text-xl text-[#A3867E] mt-10">
-                Esses desafios são comuns em pessoas com transtornos de humor,
-                afetando sua vida amorosa, profissional e social. O medo do
-                julgamento e a falta de conhecimento sobre métodos eficazes
-                fazem com que muitos permaneçam nessa situação sem buscar
-                tratamento.
-              </p>
-              <p className="font-semibold text-xl text-[#A3867E] mt-10">
-                Saiba como você pode quebrar este ciclo!
-              </p>
+              <div className="flex flex-col h-full md:w-[85%] justify-center justify-self-center self-center">
+                <p className="font-bold text-3xl md:text-4xl text-[#E9E7DB]">
+                  Hoje é bem provável que você enfrente dificuldades como:
+                </p>
+                <p className="font-semibold text-xl md:text-2xl text-[#E9E7DB] mt-6">
+                  Oscilação de humor, irritabilidade, ansiedade, tristeza,
+                  fadiga, distúrbios do sono, pensamentos repetitivos, culpa
+                  constante, crises recorrentes e insegurança quanto ao futuro.
+                </p>
+                <p className="font-regular text-xl md:text-2xl text-[#E9E7DB] mt-6">
+                  Esses desafios são comuns em pessoas com transtornos de humor,
+                  afetando sua vida amorosa, profissional e social. O medo do
+                  julgamento e a falta de conhecimento sobre métodos eficazes
+                  fazem com que muitos permaneçam nessa situação sem buscar
+                  tratamento.
+                </p>
+                <p className="font-regular text-xl md:text-2xl text-[#E9E7DB] mt-6">
+                  Saiba como você pode quebrar este ciclo!
+                </p>
 
-              <button className="mt-10 h-16 w-full md:w-[50%] p-4 bg-[#9D4931] rounded-3xl">
-                <a className="text-[#FFFFFF] text-xl">Quero quebrar o ciclo!</a>
-              </button>
+                <button className="mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl">
+                  <a className="text-[#505568] text-xl">
+                    Agendar um atendimento!
+                  </a>
+                </button>
+              </div>
             </div>
-            <div className="w-full mt-8 md:mt-0 md:w-[40%] h-auto md:p-10">
+            <div className="w-full mt-8 mb-8 md:mb-0 md:mt-0 md:w-[40%] h-auto md:p-10">
               <StressedSvg />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+};
+
+const New = () => {
+  return (
+    <>
+      <section className="p-4 md:p-0 bg-[#E9E7DB] py-16">
+        <div className="container mx-auto">
+          <div className="flex flex-col-reverse md:flex-row">
+            <div className="w-full md:w-[60%] h-auto">
+              <div className="flex flex-col h-full md:w-[85%] justify-center justify-self-center self-center">
+                <p className="font-bold text-3xl md:text-4xl text-[#69735B]">
+                  Como funciona a Análise do Comportamento para tratar estas
+                  questões?
+                </p>
+                <p className="mt-6 font-bold text-xl md:text-2xl text-[#69735B]">
+                  A Análise do Comportamento oferece uma abordagem prática,
+                  estruturada e baseada em evidências para tratar transtornos de
+                  humor.
+                </p>
+                <p className="mt-6 font-regular text-xl md:text-2xl text-[#69735B]">
+                  Por meio do entendimento dos padrões comportamentais e do
+                  trabalho com as contingências ambientais é possível ajudar os
+                  pacientes a desenvolver habilidades para lidar melhor com suas
+                  emoções e construir uma vida mais equilibrada e significativa.
+                </p>
+              </div>
+            </div>
+            <div className="w-full mt-8 mb-8 md:mb-0 md:mt-0 md:w-[40%] h-auto md:p-10">
+              <WomanThinking />
             </div>
           </div>
         </div>
@@ -284,19 +324,13 @@ const Sixth = () => {
     {
       question: "Onde ocorrem os atendimentos?",
       answer:
-        "Os atendimentos podem ser realizados presencialmente ou online, dependendo da sua preferência e disponibilidade.",
+        "Os atendimentos  ocorrem na modalidade online e presencial na cidade de Hortolândia.",
       hasNext: true,
     },
     {
       question: "Qual a duração das sessões?",
       answer:
         "As sessões geralmente duram entre 50 minutos a 1 hora, dependendo do tipo de atendimento e da necessidade do paciente.",
-      hasNext: true,
-    },
-    {
-      question: "Qual o valor da consulta?",
-      answer:
-        "O número de sessões varia de acordo com a necessidade de cada paciente. Após a avaliação inicial, será possível ter uma ideia melhor do tratamento.",
       hasNext: false,
     },
     // Adicione mais FAQs conforme necessário
@@ -369,6 +403,7 @@ export default function Home() {
         <div className="min-h-screen">
           <First />
           <Second />
+          <New />
           <Third />
           <div className="absolute w-full flex justify-center">
             <div className="flex items-center justify-center h-[100px] w-[100px] rounded-full bg-[#E9E7DB] mt-[-50px]">
