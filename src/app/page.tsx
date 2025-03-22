@@ -18,7 +18,7 @@ import GPTHeader from "./header.tsx";
 const First = () => {
   return (
     <>
-      <section className="p-4 py-8 md:py-16 md:pt-0">
+      <section className="p-4 py-6 md:py-16 md:pt-0">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="flex flex-col justify-center w-full md:w-[40%] h-auto">
