@@ -58,22 +58,22 @@ const Second = () => {
           <div className="flex flex-col-reverse md:flex-row">
             <div className="w-full md:w-[60%] h-auto">
               <div className="flex flex-col h-full md:w-[85%] justify-center justify-self-center self-center">
-                <p className="font-bold text-3xl md:text-4xl text-[#E9E7DB]">
+                <p className="font-bold text-3xl text-[#E9E7DB]">
                   Hoje é bem provável que você enfrente dificuldades como:
                 </p>
-                <p className="font-semibold text-xl md:text-2xl text-[#E9E7DB] mt-6">
+                <p className="font-semibold text-xl text-[#E9E7DB] mt-6">
                   Oscilação de humor, irritabilidade, ansiedade, tristeza,
                   fadiga, distúrbios do sono, pensamentos repetitivos, culpa
                   constante, crises recorrentes e insegurança quanto ao futuro.
                 </p>
-                <p className="font-regular text-xl md:text-2xl text-[#E9E7DB] mt-6">
+                <p className="font-regular text-xl text-[#E9E7DB] mt-6">
                   Esses desafios são comuns em pessoas com transtornos de humor,
                   afetando sua vida amorosa, profissional e social. O medo do
                   julgamento e a falta de conhecimento sobre métodos eficazes
                   fazem com que muitos permaneçam nessa situação sem buscar
                   tratamento.
                 </p>
-                <p className="font-regular text-xl md:text-2xl text-[#E9E7DB] mt-6">
+                <p className="font-regular text-xl text-[#E9E7DB] mt-6">
                   Saiba como você pode quebrar este ciclo!
                 </p>
 
@@ -102,16 +102,16 @@ const New = () => {
           <div className="flex flex-col-reverse md:flex-row">
             <div className="w-full md:w-[60%] h-auto">
               <div className="flex flex-col h-full md:w-[85%] justify-center justify-self-center self-center">
-                <p className="font-bold text-3xl md:text-4xl text-[#69735B]">
+                <p className="font-bold text-3xl text-[#69735B]">
                   Como funciona a Análise do Comportamento para tratar estas
                   questões?
                 </p>
-                <p className="mt-6 font-bold text-xl md:text-2xl text-[#69735B]">
+                <p className="mt-6 font-bold text-xl text-[#69735B]">
                   A Análise do Comportamento oferece uma abordagem prática,
                   estruturada e baseada em evidências para tratar transtornos de
                   humor.
                 </p>
-                <p className="mt-6 font-regular text-xl md:text-2xl text-[#69735B]">
+                <p className="mt-6 font-regular text-xl text-[#69735B]">
                   Por meio do entendimento dos padrões comportamentais e do
                   trabalho com as contingências ambientais é possível ajudar os
                   pacientes a desenvolver habilidades para lidar melhor com suas
