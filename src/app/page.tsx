@@ -25,7 +25,7 @@ const First = () => {
               <p className="font-[1000] text-4xl text-[#9D4931]">
                 Assuma o controle da sua vida e conquiste sua estabilidade!
               </p>
-              <p className="text-lg text-[#A3867E] mt-10">
+              <p className="text-lg text-[#A3867E] mt-6">
                 Conquiste mais equilíbrio emocional, estabilidade e bem-estar.
                 Saiba como a abordagem da Análise do Comportamento pode te
                 ajudar a viver com mais leveza.
