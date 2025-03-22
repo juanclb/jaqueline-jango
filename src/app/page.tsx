@@ -18,7 +18,7 @@ import GPTHeader from "./header.tsx";
 const First = () => {
   return (
     <>
-      <section className="p-4 py-6 md:py-16 md:pt-0">
+      <section className="h-screen md:h-auto p-4 py-6 md:py-16 md:pt-0">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="flex flex-col justify-center w-full md:w-[40%] h-auto">
@@ -99,7 +99,7 @@ const New = () => {
     <>
       <section className="p-4 md:p-0 bg-[#E9E7DB] py-16">
         <div className="container mx-auto">
-          <div className="flex flex-col-reverse md:flex-row">
+          <div className="flex flex-col-reverse md:flex-row-reverse">
             <div className="w-full md:w-[60%] h-auto">
               <div className="flex flex-col h-full md:w-[85%] justify-center justify-self-center self-center">
                 <p className="font-bold text-3xl text-[#69735B]">
