@@ -175,7 +175,7 @@ const Third = () => {
       id: "03",
       title: "Resultados",
       description:
-        "Os resultados incluem a melhora no sono, maior controle do estresse, redução da ansiedade e desenvolvimento do autoconhecimento. Fortalecimento da autoestima e estabilidade emocional para enfrentar desafios.",
+        "Melhora significativa nos sintomas de ansiedade e na qualidade do sono, além de uma evolução substancial na estabilidade emocional e na forma de enfrentar desafios. Além disso, a capacidade de gerenciar o estresse será aprimorada, impulsionando o autoconhecimento, a autoestima e a autoconfiança.",
     },
   ];
 
