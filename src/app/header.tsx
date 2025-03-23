@@ -35,11 +35,11 @@ export const GPTHeader = () => {
         <div className="flex flex-row w-full justify-end md:justify-evenly">
           <div className="hidden md:flex w-full justify-evenly items-center">
             <Image src={Logo} alt="Logo" />
-            <a className="font-bold text-[#9D4931]">Inicio</a>
-            <a className="text-[#777777]">Onde Ajudamos</a>
-            <a className="text-[#777777]">Como Ajudamos</a>
-            <a className="text-[#777777]">Sobre mim</a>
-            <button className="p-4 px-8 bg-[#9D4931] rounded-2xl">
+            <a className="font-bold text-[#9D4931] cursor-pointer">Inicio</a>
+            <a className="text-[#777777] cursor-pointer">Onde Ajudamos</a>
+            <a className="text-[#777777] cursor-pointer">Como Ajudamos</a>
+            <a className="text-[#777777] cursor-pointer">Sobre mim</a>
+            <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer">
               <a className="text-[#FFFFFF]">Agendar sessão</a>
             </button>
           </div>
