@@ -9,6 +9,7 @@ import Icon from "../images/Icon.js";
 import { useState } from "react";
 import Jaqueline from "../images/jaqueline.png";
 import Jaqueline2 from "../images/jaqueline2.png";
+import JaquelinePhoto from "../images/jaquelinephoto.png";
 
 import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
@@ -18,17 +19,20 @@ import GPTHeader from "./header.tsx";
 const First = () => {
   return (
     <>
-      <section className="h-[85vh] md:h-auto px-4 md:py-16 md:pt-0">
+      <section className="h-auto px-4 pb-6 md:py-16 md:pt-0">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="flex flex-col justify-center w-full md:w-[40%] h-auto">
               <p className="font-[1000] text-3xl md:text-4xl text-[#9D4931]">
                 Assuma o controle da sua vida e conquiste sua estabilidade!
               </p>
-              <p className="text-lg text-[#A3867E] mt-4 md:mt-6">
-                Conquiste mais equilíbrio emocional, estabilidade e bem-estar.
-                Saiba como a abordagem da Análise do Comportamento pode te
-                ajudar a viver com mais leveza.
+              <p className="font-semibold mt-4 md:mt-6 text-xl md:text-xl text-[#9D4931]">
+                Te ajudo a alcançar uma vida mais leve, estável e feliz com as
+                ferramentas da Psicologia
+              </p>
+              <p className="text-lg text-[#A3867E] mt-4">
+                Conheça mais sobre como a terapia com a abordagem na Análise do
+                Comportamento pode te ajudar.
               </p>
 
               <button className="mt-6 md:mt-8 h-16 w-full md:w-[60%] p-4 bg-[#9D4931] rounded-3xl cursor-pointer">
@@ -63,18 +67,19 @@ const Second = () => {
                 </p>
                 <p className="font-semibold text-lg text-[#E9E7DB] mt-6">
                   Oscilação de humor, irritabilidade, ansiedade, tristeza,
-                  fadiga, distúrbios do sono, pensamentos repetitivos, culpa
-                  constante, crises recorrentes e insegurança quanto ao futuro.
+                  fadiga, distúrbio do sono, pensamentos repetitivos, culpa
+                  constante, crises recorrentes e insegurança quanto ao futuro
                 </p>
                 <p className="font-regular text-lg text-[#E9E7DB] mt-6">
-                  Esses desafios são comuns em pessoas com transtornos de humor,
-                  afetando sua vida amorosa, profissional e social. O medo do
-                  julgamento e a falta de conhecimento sobre métodos eficazes
-                  fazem com que muitos permaneçam nessa situação sem buscar
-                  tratamento.
+                  Estas questões são muito frequentes em pessoas que enfrentam
+                  transtornos de humor e consequentemente tem dificuldades em
+                  sua vida amorosa, profissional e social. O medo do julgamento,
+                  a falta de conhecimento em métodos efetivos, faz com que
+                  muitas pessoas permaneçam nesta situação e não busquem
+                  tratamentos efetivos.
                 </p>
                 <p className="font-regular text-lg text-[#E9E7DB] mt-6">
-                  Saiba como você pode quebrar este ciclo!
+                  Conheça como você pode quebrar este ciclo!
                 </p>
 
                 <button className="mb-4 mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl cursor-pointer">
@@ -139,7 +144,7 @@ const Card = ({
   description: string;
 }) => {
   return (
-    <div className="flex flex-col relative p-6 min-h-[44vh] md:w-90 bg-[#E9E7DB] rounded-3xl">
+    <div className="flex flex-col relative p-6 min-h-[44vh] md:w-90 bg-[#E9E7DB] rounded-3xl whitespace-pre-line">
       <div className="flex h-17 w-[30%] max-w-20 mb-10 rounded-3xl items-center justify-center bg-[#69735B]">
         <a className="font-semibold text-3xl text-[#E9E7DB]">{id}</a>
       </div>
@@ -158,14 +163,13 @@ const Third = () => {
     {
       id: "01",
       title: "Descoberta",
-      description:
-        "Compreensão da queixa, levantamento da história de vida e de contingências. Conhecimento dos padrões de comportamento, do ambiente e contexto da pessoa.",
+      description: `Entendimento da queixa, padrões comportamentais e contextos vivenciados. \n \nEstratégias para reconhecer sinais precoces de episódios maníacos ou depressivos e agir antes que se intensifiquem.`,
     },
     {
       id: "02",
-      title: "Tratamento",
+      title: "Resultados",
       description:
-        "Identificação de padrões prejudiciais e sinais iniciais de episódios maníacos ou depressivos, com intervenção precoce. Modificação de comportamento, desenvolvimento de habilidades de enfrentamento e ativação comportamental, aliados a um acompanhamento contínuo.",
+        "Modificação de comportamentos, desenvolvimento de habilidades de enfrentamento e ativação comportamental, aliados a um acompanhamento contínuo.",
     },
     {
       id: "03",
@@ -237,10 +241,8 @@ const Fifth = () => {
         <div className="flex flex-col justify-center md:flex-row px-2">
           <div className="h-auto max-h-182 w-full md:max-w-160 mb-4 md:mb-0 bg-[#E9E7DB] overflow-hidden rounded-4xl">
             <Image
-              src={
-                "https://s3-alpha-sig.figma.com/img/2e6a/73ba/51bfe7a17b2eb6297a79f3048a311dc7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ONES4GfgKQwfDvR6vheGkuG0ParlTodPLYZRchFtVzAh7ZZwcef5dBYIvDo80rvp7RnuSGlu0Gadi3DiLA4fhBXVaQUQIjW2lLFP-vJMJj3HMZWM9ZjBPBHKQkzbAU6d4q-11-tti8ZfyD1HRrQWdXcQRhbYo0EE882sP76OivX-ilE~JtSfgadWy1ceCW0c0oDTcH2JG-QriSGO5yVb~i1gIpXG5MEUq6Wo7XOKh3phakGTPkseUSWSlpGOku2iUSaC1xrXKpky5jMmNw4Dw7xogWdnvkmJw9HhVgeamrQz8aGcshwXgirQN960fjvcnwO5PmdindsFfze1qtll0g__"
-              }
-              alt="Imagem"
+              src={JaquelinePhoto}
+              alt="Jaqueline reading"
               height={1920}
               width={1080}
             ></Image>
@@ -255,20 +257,17 @@ const Fifth = () => {
             <p className="text-md text-[#E9E7DB] mb-14">CRP 06/72266</p>
             <ul className="list-disc list-inside text-lg text-[#E9E7DB]">
               <li>Graduada em Psicologia</li>
-              <li>Especialista em Análise do Comportamento</li>
               <li>
-                Pós graduação em Terapia por Contingências de Reforçamento –
-                ITCR Campinas
+                Especialista em Análise do Comportamento - Pós graduação em
+                Terapia por Contingências de Reforçamento – ITCR Campinas
               </li>
               <li>
-                Pós Graduação em Neurociência do Comportamento na Faculdade
+                Pós Graduação em Neurociência do Comportamento - Faculdade
                 FaCiência.
               </li>
-              <li>Supervisora ​​de Psicólogos Analista do Comportamento.</li>
-              <li>Administradora da Clínica Jango de Psicologia e Saúde.</li>
-              <li>
-                Trabalho com atendimento clínico a adultos e adolescentes.
-              </li>
+              <li>Supervisora de Psicólogos Analista do Comportamento.</li>
+              <li>Administradora da Clínica Jango de Psicologia e Saúde</li>
+              <li>Te ajudo a viver melhor através da Psicoterapia.</li>
             </ul>
           </div>
         </div>
@@ -403,12 +402,12 @@ export default function Home() {
         <div className="min-h-screen">
           <First />
           <Second />
+          <New />
           <div className="absolute w-full flex justify-center">
-            <div className="flex items-center justify-center h-[100px] w-[100px] rounded-full bg-[#E9E7DB] mt-[-48px]">
+            <div className="flex items-center justify-center h-[100px] w-[100px] rounded-full bg-[#E9E7DB] mt-[-50px]">
               <IoIosArrowDown size={60} color={"#69735B"} />
             </div>
           </div>
-          <New />
           <Third />
           {/* <div className="absolute w-full flex justify-center">
             <div className="flex items-center justify-center h-[100px] w-[100px] rounded-full bg-[#E9E7DB] mt-[-50px]">
