@@ -11,7 +11,7 @@ import Jaqueline from "../images/jaqueline.png";
 import Jaqueline2 from "../images/jaqueline2.png";
 import JaquelinePhoto from "../images/jaquelinephoto.png";
 
-import { BiSolidDownArrow, BiSolidRightArrow } from "react-icons/bi";
+import { BiSolidRightArrow } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 
 import GPTHeader from "./header.tsx";
