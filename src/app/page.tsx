@@ -19,7 +19,7 @@ import GPTHeader from "./header.tsx";
 const First = () => {
   return (
     <>
-      <section className="h-auto px-4 pb-6 md:py-16 md:pt-0">
+      <section id="introducao" className="h-auto px-4 pb-6 md:py-16 md:pt-0">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="flex flex-col justify-center w-full md:w-[40%] h-auto">
@@ -57,7 +57,7 @@ const First = () => {
 const Second = () => {
   return (
     <>
-      <section className="bg-[#505568] p-4 py-16">
+      <section id="dificuldades" className="bg-[#505568] p-4 py-16">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="w-full md:w-[60%] h-auto">
@@ -102,7 +102,7 @@ const Second = () => {
 const New = () => {
   return (
     <>
-      <section className="p-4 md:p-0 bg-[#E9E7DB] py-16">
+      <section id="comofunciona" className="p-4 md:p-0 bg-[#E9E7DB] py-16">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row-reverse">
             <div className="w-full md:w-[60%] h-auto">
@@ -167,7 +167,7 @@ const Third = () => {
     },
     {
       id: "02",
-      title: "Resultados",
+      title: "Tratamento",
       description:
         "Modificação de comportamentos, desenvolvimento de habilidades de enfrentamento e ativação comportamental, aliados a um acompanhamento contínuo.",
     },
@@ -180,7 +180,7 @@ const Third = () => {
   ];
 
   return (
-    <section className="bg-[#69735B] p-4 py-16">
+    <section id="processo" className="bg-[#69735B] p-4 py-16">
       <div className="container mx-auto p-4 flex flex-col items-center">
         <a className="font-bold text-3xl text-[#E9E7DB] mb-12">
           Entenda o processo
@@ -219,7 +219,7 @@ const Fourth = () => {
   };
 
   return (
-    <section className="p-4 py-16">
+    <section id="assumaocontrole" className="p-4 py-16">
       <div className="container mx-auto p-4 flex flex-col items-center">
         <p className="font-bold text-3xl text-[#69735B] mb-8 md:max-w-[24ch] text-center">
           Assuma o controle da sua vida e conquiste sua estabilidade!
@@ -236,7 +236,7 @@ const Fourth = () => {
 
 const Fifth = () => {
   return (
-    <section className="bg-[#505568] p-4 py-16 bg-image">
+    <section id="quemsoueu" className="bg-[#505568] p-4 py-16 bg-image">
       <div className="container mx-auto">
         <div className="flex flex-col justify-center md:flex-row px-2">
           <div className="h-auto max-h-182 w-full md:max-w-160 mb-4 md:mb-0 bg-[#E9E7DB] overflow-hidden rounded-4xl">
@@ -247,7 +247,7 @@ const Fifth = () => {
               width={1080}
             ></Image>
           </div>
-          <div className="flex flex-col justify-end h-auto max-h-182 md:max-w-160 px-2 md:px-8 w-full">
+          <div className="flex flex-col md:py-6 py-0 h-auto max-h-182 md:max-w-160 px-2 md:px-8 w-full">
             <p className="font-semibold text-3xl text-[#E9E7DB] mb-2">
               Jaqueline Jango
             </p>
@@ -275,6 +275,13 @@ const Fifth = () => {
     </section>
   );
 };
+/*
+{isOpen ? (
+          <BiSolidDownArrow color="#505568" className="" />
+        ) : (
+          <BiSolidRightArrow color="#505568" className="" />
+        )}
+*/
 
 const FAQItem = ({
   question,
@@ -294,19 +301,24 @@ const FAQItem = ({
         className="flex flex-row justify-between items-center w-full text-left focus:outline-none cursor-pointer"
       >
         <p className="font-bold text-xl text-[#505568]">{question}</p>
-        {isOpen ? (
-          <BiSolidDownArrow color="#505568" className="" />
-        ) : (
-          <BiSolidRightArrow color="#505568" className="" />
-        )}
+        <div
+          className={`transform transition-transform duration-300 ${
+            isOpen ? "rotate-90" : ""
+          }`}
+        >
+          <BiSolidRightArrow color="#505568" />
+        </div>
         {/* <BiSolidDownArrow className="" /> */}
       </button>
+
       <div
-        className={`overflow-hidden transition-max-height duration-500 ease-in-out ${
-          isOpen ? "max-h-96" : "max-h-0"
+        className={`grid transition-all duration-300 ease-in-out ${
+          isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
         }`}
       >
-        <div className="mt-2 text-lg text-[#505568]">{answer}</div>
+        <div className="overflow-hidden">
+          <div className="mt-2 text-lg text-[#505568] py-2">{answer}</div>
+        </div>
       </div>
     </div>
   );
@@ -336,7 +348,7 @@ const Sixth = () => {
   ];
 
   return (
-    <section className="p-4 py-16">
+    <section id="perguntasfrequentes" className="p-4 py-16">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col justify-center items-center h-auto w-full mb-8 md:mb-0">
@@ -373,7 +385,7 @@ const Seventh = () => {
 
   return (
     <>
-      <section className="pt-8">
+      <section id="saibamais" className="pt-8 md:pt-0">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row">
             <div className="p-4 md:pl-8 flex flex-col justify-center">

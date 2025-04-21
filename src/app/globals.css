@@ -19,6 +19,12 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+  /* Ajuste este valor para corresponder à altura do seu cabeçalho */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
@@ -29,7 +35,7 @@ body {
   background-image: url('../images/halflogo.png');
   background-size: 15%;
     /* Ajusta a imagem para cobrir toda a div */
-    background-position: top right;
+    background-position: bottom right;
     /* Alinha a imagem no lado superior esquerdo */
     background-repeat: no-repeat;
 }

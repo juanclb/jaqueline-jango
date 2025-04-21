@@ -25,6 +25,7 @@ export const GPTHeader = () => {
   //     </Link>
   //   );
   // };
+  //
 
   return (
     <header className="container mx-auto flex flex-col py-4 md:py-4 bg-[#E9E7DB] margin-pc">
@@ -35,10 +36,21 @@ export const GPTHeader = () => {
         <div className="flex flex-row w-full justify-end md:justify-evenly">
           <div className="hidden md:flex w-full justify-evenly items-center">
             <Image src={Logo} alt="Logo" />
-            <a className="font-bold text-[#9D4931] cursor-pointer">Inicio</a>
-            <a className="text-[#777777] cursor-pointer">Onde Ajudamos</a>
-            <a className="text-[#777777] cursor-pointer">Como Ajudamos</a>
-            <a className="text-[#777777] cursor-pointer">Sobre mim</a>
+            <a
+              href="#introducao"
+              className="font-bold text-[#9D4931] cursor-pointer"
+            >
+              Inicio
+            </a>
+            <a href="#dificuldades" className="text-[#777777] cursor-pointer">
+              Onde Ajudamos
+            </a>
+            <a href="#comofunciona" className="text-[#777777] cursor-pointer">
+              Como Ajudamos
+            </a>
+            <a href="#quemsoueu" className="text-[#777777] cursor-pointer">
+              Sobre mim
+            </a>
             <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer">
               <a className="text-[#FFFFFF]">Agendar sessão</a>
             </button>
@@ -82,11 +94,31 @@ export const GPTHeader = () => {
       {isMenuOpen && (
         <nav className="mt-4 md:mt-0">
           <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4 items-center">
-            <li>Início</li>
-            <li>Onde ajudamos</li>
-            <li>Como ajudamos</li>
-            <li>Sobre mim</li>
-            <li>Agendar sessão</li>
+            <li>
+              <a href="#introducao" className="font-bold text-[#9D4931]">
+                Início
+              </a>
+            </li>
+            <li>
+              <a href="#dificuldades" className="text-[#777777]">
+                Onde ajudamos
+              </a>
+            </li>
+            <li>
+              <a href="#comofunciona" className="text-[#777777]">
+                Como ajudamos
+              </a>
+            </li>
+            <li>
+              <a href="#sobremim" className="text-[#777777]">
+                Sobre mim
+              </a>
+            </li>
+            <li>
+              <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer text-[#FFF]">
+                <a href="">Agendar sessão</a>
+              </button>
+            </li>
           </ul>
         </nav>
       )}
