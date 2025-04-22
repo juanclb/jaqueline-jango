@@ -34,8 +34,7 @@ const First = () => {
                 Conheça mais sobre como a terapia com a abordagem na Análise do
                 Comportamento pode te ajudar.
               </p>
-
-              <button className="mt-6 md:mt-8 h-16 w-full md:w-[60%] p-4 bg-[#9D4931] rounded-3xl cursor-pointer">
+              <button className="mt-6 md:mt-8 h-16 w-full md:w-[60%] p-4 bg-[#9D4931] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]">
                 <a className="text-[#FFFFFF] text-lg">Agendar sessão</a>
               </button>
             </div>
@@ -82,7 +81,7 @@ const Second = () => {
                   Conheça como você pode quebrar este ciclo!
                 </p>
 
-                <button className="mb-4 mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl cursor-pointer">
+                <button className="mb-4 mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#F5F3E7] hover:shadow-lg hover:transform hover:scale-[1.02]">
                   <a className="text-[#505568] text-lg">
                     Agendar um atendimento!
                   </a>
@@ -211,7 +210,7 @@ const Fourth = () => {
         // onClick={() => {
         //   console.log("clickou");
         // }}
-        className="text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer"
+        className="text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#7A8468] hover:shadow-lg hover:transform hover:scale-[1.02]"
       >
         <a className="text-[#E9E7DB] text-lg">Agendar uma sessão</a>
       </button>
@@ -376,7 +375,7 @@ const Seventh = () => {
     return (
       <button
         onClick={() => window.open("https://wa.me/5519991999068", "_blank")}
-        className="text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[100%] bg-[#505568] rounded-3xl cursor-pointer"
+        className="text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[100%] bg-[#505568] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#5E6377] hover:shadow-lg hover:transform hover:scale-[1.02]"
       >
         <a className="text-[#E9E7DB]">Entrar em contato pelo WhatsApp</a>
       </button>

@@ -51,7 +51,7 @@ export const GPTHeader = () => {
             <a href="#quemsoueu" className="text-[#777777] cursor-pointer">
               Sobre mim
             </a>
-            <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer">
+            <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]">
               <a className="text-[#FFFFFF]">Agendar sessão</a>
             </button>
           </div>
