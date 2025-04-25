@@ -56,7 +56,10 @@ const First = () => {
 const Second = () => {
   return (
     <>
-      <section id="dificuldades" className="bg-[#505568] p-4 py-16">
+      <section
+        id="dificuldades"
+        className="bg-[#505568] p-4 md:py-14 py-8 pb-8"
+      >
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="w-full md:w-[60%] h-auto">
@@ -101,7 +104,7 @@ const Second = () => {
 const New = () => {
   return (
     <>
-      <section id="comofunciona" className="p-4 md:p-0 bg-[#E9E7DB] py-16">
+      <section id="comofunciona" className="p-4 md:p-0 bg-[#E9E7DB] pt-0 pb-16">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row-reverse">
             <div className="w-full md:w-[60%] h-auto">
@@ -218,7 +221,7 @@ const Fourth = () => {
   };
 
   return (
-    <section id="assumaocontrole" className="p-4 py-16">
+    <section id="assumaocontrole" className="p-4 md:py-14 py-8">
       <div className="container mx-auto p-4 flex flex-col items-center">
         <p className="font-bold text-3xl text-[#69735B] mb-8 md:max-w-[24ch] text-center">
           Assuma o controle da sua vida e conquiste sua estabilidade!
@@ -253,7 +256,7 @@ const Fifth = () => {
             <p className="text-xl text-[#E9E7DB] mb-2">
               Psicóloga Especialista em Análise do Comportamento
             </p>
-            <p className="text-md text-[#E9E7DB] mb-14">CRP 06/72266</p>
+            <p className="text-md text-[#E9E7DB] mb-10">CRP 06/72266</p>
             <ul className="list-disc list-inside text-lg text-[#E9E7DB]">
               <li>Graduada em Psicologia</li>
               <li>
@@ -274,13 +277,6 @@ const Fifth = () => {
     </section>
   );
 };
-/*
-{isOpen ? (
-          <BiSolidDownArrow color="#505568" className="" />
-        ) : (
-          <BiSolidRightArrow color="#505568" className="" />
-        )}
-*/
 
 const FAQItem = ({
   question,
@@ -347,7 +343,7 @@ const Sixth = () => {
   ];
 
   return (
-    <section id="perguntasfrequentes" className="p-4 py-16">
+    <section id="perguntasfrequentes" className="p-4 py-12">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row">
           <div className="flex flex-col justify-center items-center h-auto w-full mb-8 md:mb-0">

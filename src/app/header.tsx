@@ -38,17 +38,26 @@ export const GPTHeader = () => {
             <Image src={Logo} alt="Logo" />
             <a
               href="#introducao"
-              className="font-bold text-[#9D4931] cursor-pointer"
+              className="font-bold text-[#9D4931] cursor-pointer transition-all duration-300 hover:text-[#B85738]"
             >
               Inicio
             </a>
-            <a href="#dificuldades" className="text-[#777777] cursor-pointer">
+            <a
+              href="#dificuldades"
+              className="text-[#777777] cursor-pointer transition-all duration-300 hover:text-[#9D4931]"
+            >
               Onde Ajudamos
             </a>
-            <a href="#comofunciona" className="text-[#777777] cursor-pointer">
+            <a
+              href="#comofunciona"
+              className="text-[#777777] cursor-pointer transition-all duration-300 hover:text-[#9D4931]"
+            >
               Como Ajudamos
             </a>
-            <a href="#quemsoueu" className="text-[#777777] cursor-pointer">
+            <a
+              href="#quemsoueu"
+              className="text-[#777777] cursor-pointer transition-all duration-300 hover:text-[#9D4931]"
+            >
               Sobre mim
             </a>
             <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]">
@@ -110,7 +119,7 @@ export const GPTHeader = () => {
               </a>
             </li>
             <li>
-              <a href="#sobremim" className="text-[#777777]">
+              <a href="#quemsoueu" className="text-[#777777]">
                 Sobre mim
               </a>
             </li>
