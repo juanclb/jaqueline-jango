@@ -2,9 +2,7 @@
 
 import React from "react";
 import { useState } from "react";
-// import Link from "next/link";
-import Image from "next/image";
-import Logo from "../images/logo.png";
+import OriginalSizeImage from "./OriginalSizeImage";
 
 export const GPTHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -13,29 +11,21 @@ export const GPTHeader = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // const CustomLink = ({ page, href }: { page: string; href: string }) => {
-  //   const isActive = page === currentPage;
-
-  //   const inactiveStyle = "self-center padding-5";
-  //   const activeStyle = "py-0.5 px-3 navbarColor self-center rounded-2xl";
-
-  //   return (
-  //     <Link className={isActive ? activeStyle : inactiveStyle} href={href}>
-  //       {page}
-  //     </Link>
-  //   );
-  // };
-  //
-
   return (
     <header className="container mx-auto flex flex-col py-4 md:py-4 bg-[#E9E7DB] margin-pc">
       <div className="flex w-full justify-center">
         <div className="ml-6 md:hidden">
-          <Image src={Logo} alt="Logo" />
+          <OriginalSizeImage
+            src={"https://agenciaaltitude.com/logo.png"}
+            alt="Logo"
+          />
         </div>
         <div className="flex flex-row w-full justify-end md:justify-evenly">
           <div className="hidden md:flex w-full justify-evenly items-center">
-            <Image src={Logo} alt="Logo" />
+            <OriginalSizeImage
+              src={"https://agenciaaltitude.com/logo.png"}
+              alt="Logo"
+            />
             <a
               href="#introducao"
               className="font-bold text-[#9D4931] cursor-pointer transition-all duration-300 hover:text-[#B85738]"

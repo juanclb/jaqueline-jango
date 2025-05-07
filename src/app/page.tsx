@@ -2,24 +2,22 @@
 
 // import "../app/globals.css";
 
-import Image from "next/image";
+// import Image from "next/image";
 import StressedSvg from "../images/Stressed.js";
 import WomanThinking from "../images/WomanThinking.js";
 import Icon from "../images/Icon.js";
 import { useState } from "react";
-import Jaqueline from "../images/jaqueline.png";
-import Jaqueline2 from "../images/jaqueline2.png";
-import JaquelinePhoto from "../images/jaquelinephoto.png";
 
 import { BiSolidRightArrow } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 
 import GPTHeader from "./header.tsx";
+import OriginalSizeImage from "./OriginalSizeImage.tsx";
 
 const First = () => {
   return (
     <>
-      <section id="introducao" className="h-auto px-4 pb-6  md:pt-0">
+      <section id="introducao" className="h-auto px-4 pb-8 md:pt-0">
         <div className="container mx-auto">
           <div className="flex flex-col-reverse md:flex-row">
             <div className="flex flex-col justify-center w-full md:w-[40%] h-auto">
@@ -39,8 +37,8 @@ const First = () => {
               </button>
             </div>
             <div className="mt-[-8%] md:mt-auto relative self-center w-[90%] md:w-[60%] h-auto md:p-10 md:pt-0">
-              <Image
-                src={Jaqueline}
+              <OriginalSizeImage
+                src={"https://agenciaaltitude.com/jaqueline.png"}
                 alt="Jaqueline"
                 className="relative z-10"
               />
@@ -242,12 +240,10 @@ const Fifth = () => {
       <div className="container mx-auto">
         <div className="flex flex-col justify-center md:flex-row px-2">
           <div className="h-auto max-h-182 w-full md:max-w-160 mb-4 md:mb-0 bg-[#E9E7DB] overflow-hidden rounded-4xl">
-            <Image
-              src={JaquelinePhoto}
+            <OriginalSizeImage
+              src={"https://agenciaaltitude.com/jaqueline.png"}
               alt="Jaqueline reading"
-              height={1920}
-              width={1080}
-            ></Image>
+            />
           </div>
           <div className="flex flex-col md:py-6 py-0 h-auto max-h-182 md:max-w-160 px-2 md:px-8 w-full">
             <p className="font-semibold text-3xl text-[#E9E7DB] mb-2">
@@ -390,7 +386,10 @@ const Seventh = () => {
               <SessionButton />
             </div>
             <div className="w-full md:max-w-[60%] md:w-[60%] h-auto">
-              <Image src={Jaqueline2} alt="Jaqueline 2" />
+              <OriginalSizeImage
+                src={"https://agenciaaltitude.com/jaqueline2.png"}
+                alt="Jaqueline 2"
+              />
             </div>
           </div>
         </div>
