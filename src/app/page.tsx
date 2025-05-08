@@ -257,7 +257,7 @@ const Fifth = () => {
         <div className="flex flex-col justify-center md:flex-row px-2">
           <div className="h-auto max-h-182 w-full md:max-w-160 mb-4 md:mb-0 bg-[#E9E7DB] overflow-hidden rounded-4xl">
             <OriginalSizeImage
-              src={"https://agenciaaltitude.com/jaqueline.png"}
+              src={"https://agenciaaltitude.com/jaquelinephoto.png"}
               alt="Jaqueline reading"
             />
           </div>
