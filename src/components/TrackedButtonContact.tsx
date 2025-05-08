@@ -1,0 +1,115 @@
+"use client";
+
+import React from "react";
+import { recordContactClick } from "../utils/client-analytics";
+
+/**
+ * Interface para as propriedades do botão de contato rastreado
+ */
+interface TrackedContactButtonProps {
+  buttonId: string;
+  buttonName: string;
+  sectionId: string;
+  children: React.ReactNode;
+  className?: string;
+  url?: string;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+/**
+ * Botão de contato com rastreamento integrado
+ * Simplificado para apenas registrar o clique e não rastrear tempo nas seções
+ */
+const TrackedContactButton: React.FC<TrackedContactButtonProps> = ({
+  buttonId,
+  buttonName,
+  sectionId,
+  children,
+  className,
+  url = "https://wa.me/5519991999068",
+  onClick,
+}) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    // Registrar o clique nos analytics
+    recordContactClick(buttonId, buttonName, sectionId);
+
+    // Executar função onClick personalizada se fornecida
+    if (onClick) {
+      onClick(e);
+    }
+
+    // Abrir a URL (por padrão, WhatsApp)
+    window.open(url, "_blank");
+  };
+
+  return (
+    <button className={className} onClick={handleClick}>
+      {children}
+    </button>
+  );
+};
+
+/**
+ * Interface para as propriedades do botão do WhatsApp
+ */
+interface WhatsAppButtonProps {
+  sectionId: string;
+  buttonId?: string;
+  buttonName?: string;
+  className?: string;
+}
+
+/**
+ * Botão do WhatsApp pré-configurado com rastreamento
+ */
+export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
+  sectionId,
+  buttonId = `whatsapp-${sectionId}`,
+  buttonName = `WhatsApp (${sectionId})`,
+  className = "text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[100%] bg-[#505568] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#5E6377] hover:shadow-lg hover:transform hover:scale-[1.02]",
+}) => {
+  return (
+    <TrackedContactButton
+      buttonId={buttonId}
+      buttonName={buttonName}
+      sectionId={sectionId}
+      className={className}
+    >
+      <a className="text-[#E9E7DB]">Entrar em contato pelo WhatsApp</a>
+    </TrackedContactButton>
+  );
+};
+
+/**
+ * Interface para as propriedades do botão de agendamento
+ */
+interface ScheduleButtonProps {
+  sectionId: string;
+  buttonId?: string;
+  buttonName?: string;
+  className?: string;
+}
+
+/**
+ * Botão de agendamento pré-configurado com rastreamento
+ */
+export const ScheduleButton: React.FC<ScheduleButtonProps> = ({
+  sectionId,
+  buttonId = `agendar-${sectionId}`,
+  buttonName = `Agendar Sessão (${sectionId})`,
+  className = "text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#7A8468] hover:shadow-lg hover:transform hover:scale-[1.02]",
+}) => {
+  return (
+    <TrackedContactButton
+      buttonId={buttonId}
+      buttonName={buttonName}
+      sectionId={sectionId}
+      className={className}
+      url="https://wa.me/5519991999068?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão"
+    >
+      <a className="text-[#E9E7DB] text-lg">Agendar uma sessão</a>
+    </TrackedContactButton>
+  );
+};
+
+export default TrackedContactButton;

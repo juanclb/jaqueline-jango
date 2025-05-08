@@ -13,6 +13,11 @@ import { IoIosArrowDown } from "react-icons/io";
 
 import GPTHeader from "./header.tsx";
 import OriginalSizeImage from "./OriginalSizeImage.tsx";
+import SectionTracker from "../components/SectionTracker.tsx";
+import TrackedContactButton, {
+  ScheduleButton,
+  WhatsAppButton,
+} from "../components/TrackedButtonContact.tsx";
 
 const First = () => {
   return (
@@ -32,9 +37,11 @@ const First = () => {
                 Conheça mais sobre como a terapia com a abordagem na Análise do
                 Comportamento pode te ajudar.
               </p>
-              <button className="mt-6 md:mt-8 h-16 w-full md:w-[60%] p-4 bg-[#9D4931] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]">
-                <a className="text-[#FFFFFF] text-lg">Agendar sessão</a>
-              </button>
+              <ScheduleButton
+                sectionId="introducao"
+                buttonName="Agendar Sessão (Introdução)"
+                className="mt-6 md:mt-8 h-16 w-full md:w-[60%] p-4 bg-[#9D4931] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]"
+              />
             </div>
             <div className="mt-[-8%] md:mt-auto relative self-center w-[90%] md:w-[60%] h-auto md:p-10 md:pt-0">
               <OriginalSizeImage
@@ -82,11 +89,18 @@ const Second = () => {
                   Conheça como você pode quebrar este ciclo!
                 </p>
 
-                <button className="mb-4 mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#F5F3E7] hover:shadow-lg hover:transform hover:scale-[1.02]">
+                <TrackedContactButton
+                  buttonId={"agendar-dificuldades"}
+                  buttonName={"Agendar Atendimento (Dificuldades)"}
+                  sectionId={"dificuldades"}
+                  className={
+                    "mb-4 mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#F5F3E7] hover:shadow-lg hover:transform hover:scale-[1.02]"
+                  }
+                >
                   <a className="text-[#505568] text-lg">
                     Agendar um atendimento!
                   </a>
-                </button>
+                </TrackedContactButton>
               </div>
             </div>
             <div className="w-full mt-8 mb-8 md:mb-0 md:mt-0 md:w-[40%] h-auto md:p-10">
@@ -207,14 +221,16 @@ const Third = () => {
 const Fourth = () => {
   const SessionButton = () => {
     return (
-      <button
-        // onClick={() => {
-        //   console.log("clickou");
-        // }}
-        className="text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#7A8468] hover:shadow-lg hover:transform hover:scale-[1.02]"
+      <TrackedContactButton
+        buttonId={"agendar-controle"}
+        buttonName={"Agendar Sessão (Controle)"}
+        sectionId={"assumaocontrole"}
+        className={
+          "text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#7A8468] hover:shadow-lg hover:transform hover:scale-[1.02]"
+        }
       >
-        <a className="text-[#E9E7DB] text-lg">Agendar uma sessão</a>
-      </button>
+        <a className="text-[#E9E7DB]">Agendar uma sessão</a>
+      </TrackedContactButton>
     );
   };
 
@@ -364,14 +380,7 @@ const Sixth = () => {
 
 const Seventh = () => {
   const SessionButton = () => {
-    return (
-      <button
-        onClick={() => window.open("https://wa.me/5519991999068", "_blank")}
-        className="text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[100%] bg-[#505568] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#5E6377] hover:shadow-lg hover:transform hover:scale-[1.02]"
-      >
-        <a className="text-[#E9E7DB]">Entrar em contato pelo WhatsApp</a>
-      </button>
-    );
+    return <WhatsAppButton sectionId="saibamais" />;
   };
 
   return (
@@ -402,6 +411,7 @@ export default function Home() {
   return (
     <>
       <main className={`h-screen`}>
+        <SectionTracker />
         <header>
           <GPTHeader />
         </header>
