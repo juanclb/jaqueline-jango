@@ -1,4 +1,5 @@
 import React from "react";
+import ProfessionalChart from "./ProfessionalChart";
 
 interface VisitsPanelProps {
   data: any;

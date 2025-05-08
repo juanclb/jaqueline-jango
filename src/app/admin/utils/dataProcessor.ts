@@ -219,13 +219,21 @@ const prepareButtonsChartData = (
 ): any[] => {
   return Object.entries(globalButtons || {}).map(
     ([id, data]: [string, any]) => {
-      const chartData = prepareDateChartData(dates, byDate, id, dateRange);
+      if (id === "pageViews" || id === "uniqueVisitors") {
+        const chartData = prepareDateChartData(dates, byDate, id, dateRange);
+        return {
+          ...data,
+          id,
+          chartData,
+        };
+      }
+      return { ...data, id, chartData: [] };
 
-      return {
-        ...data,
-        id,
-        chartData,
-      };
+      // return {
+      //   ...data,
+      //   id,
+      //   chartData,
+      // };
     }
   );
 };
