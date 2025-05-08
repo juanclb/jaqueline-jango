@@ -43,7 +43,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
             </div>
             <div>
               <h1 className="text-xl font-bold text-[#505568] leading-tight">
-                Dashboard Premium
+                Painel de Administração
               </h1>
               <p className="text-sm text-gray-500 leading-none">
                 Estatísticas do site

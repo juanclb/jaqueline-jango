@@ -34,11 +34,9 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin, error }) => {
               <h1 className="text-3xl font-bold text-white">JJ</h1>
             </div>
             <h2 className="text-2xl font-bold text-[#505568]">
-              Dashboard Premium
+              Painel de Administração
             </h2>
-            <p className="text-gray-500 mt-2">
-              Painel de Estatísticas Exclusivo
-            </p>
+            <p className="text-gray-500 mt-2">Painel de Estatísticas</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
