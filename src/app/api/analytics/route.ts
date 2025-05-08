@@ -14,6 +14,8 @@ import {
   ContactClickPayload,
 } from "@/utils/analytics-types";
 
+export const runtime = "edge";
+
 /**
  * API para obter dados de analytics
  */
