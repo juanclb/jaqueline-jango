@@ -56,7 +56,7 @@ export async function POST(
     switch (action) {
       case "pageView": {
         const payload = data as PageViewPayload;
-        const { userId, isUniqueVisit } = payload;
+        const { isUniqueVisit } = payload;
 
         // Incrementa sempre o contador de visitas
         storedData.global.totalVisits += 1;
