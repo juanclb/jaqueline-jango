@@ -26,7 +26,7 @@ const TrackedContactButton: React.FC<TrackedContactButtonProps> = ({
   sectionId,
   children,
   className,
-  url = "https://wa.me/5519991999068",
+  url = "https://wa.me/5519971722368",
   onClick,
 }) => {
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -57,6 +57,7 @@ interface WhatsAppButtonProps {
   buttonId?: string;
   buttonName?: string;
   className?: string;
+  url?: string;
 }
 
 /**
@@ -64,6 +65,7 @@ interface WhatsAppButtonProps {
  */
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   sectionId,
+  url = `https://wa.me/5519971722368?text=Ol%C3%A1!%20Me%20interessei%20pela%20sua%20abordagem%20e%20quero%20agendar%20uma%20sess%C3%A3o%20%F0%9F%A4%8D`,
   buttonId = `whatsapp-${sectionId}`,
   buttonName = `WhatsApp (${sectionId})`,
   className = "text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[100%] bg-[#505568] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#5E6377] hover:shadow-lg hover:transform hover:scale-[1.02]",
@@ -74,6 +76,7 @@ export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
       buttonName={buttonName}
       sectionId={sectionId}
       className={className}
+      url={url}
     >
       <a className="text-[#E9E7DB]">Entrar em contato pelo WhatsApp</a>
     </TrackedContactButton>
@@ -88,6 +91,7 @@ interface ScheduleButtonProps {
   buttonId?: string;
   buttonName?: string;
   className?: string;
+  url?: string;
 }
 
 /**
@@ -97,6 +101,7 @@ export const ScheduleButton: React.FC<ScheduleButtonProps> = ({
   sectionId,
   buttonId = `agendar-${sectionId}`,
   buttonName = `Agendar Sessão (${sectionId})`,
+  url = "https://wa.me/5519971722368?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão",
   className = "text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#7A8468] hover:shadow-lg hover:transform hover:scale-[1.02]",
 }) => {
   return (
@@ -105,7 +110,7 @@ export const ScheduleButton: React.FC<ScheduleButtonProps> = ({
       buttonName={buttonName}
       sectionId={sectionId}
       className={className}
-      url="https://wa.me/5519991999068?text=Olá,%20gostaria%20de%20agendar%20uma%20sessão"
+      url={url}
     >
       <a className="text-[#E9E7DB] text-lg">Agendar uma sessão</a>
     </TrackedContactButton>

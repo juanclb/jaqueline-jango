@@ -40,6 +40,7 @@ const First = () => {
               <ScheduleButton
                 sectionId="introducao"
                 buttonName="Agendar Sessão (Introdução)"
+                url="https://wa.me/5519971722368?text=Ol%C3%A1!%20Vi%20sua%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20%E2%80%8B%E2%80%8B%E2%9D%A4%EF%B8%8F"
                 className="mt-6 md:mt-8 h-16 w-full md:w-[60%] p-4 bg-[#9D4931] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]"
               />
             </div>
@@ -93,6 +94,9 @@ const Second = () => {
                   buttonId={"agendar-dificuldades"}
                   buttonName={"Agendar Atendimento (Dificuldades)"}
                   sectionId={"dificuldades"}
+                  url="https://wa.me/5519971722368?text=Ol%C3%A1%2C%20gostaria%20de%20entender%20como%20a%20an%C3%A1lise%20do%20comportamento%20pode%20me%20ajudar.%20%F0%9F%92%99
+
+"
                   className={
                     "mb-4 mt-10 h-16 w-full md:w-[50%] p-4 bg-[#E9E7DB] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#F5F3E7] hover:shadow-lg hover:transform hover:scale-[1.02]"
                   }
@@ -225,6 +229,7 @@ const Fourth = () => {
         buttonId={"agendar-controle"}
         buttonName={"Agendar Sessão (Controle)"}
         sectionId={"assumaocontrole"}
+        url="https://wa.me/5519971722368?text=Ol%C3%A1!%20Quero%20entender%20como%20a%20psicoterapia%20pode%20me%20ajudar.%20%F0%9F%92%9A"
         className={
           "text-xl text-[#E9E7DB] p-4 w-[70%] md:w-[25%] bg-[#69735B] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#7A8468] hover:shadow-lg hover:transform hover:scale-[1.02]"
         }

@@ -1,24 +1,28 @@
 {
   "global": {
-    "totalVisits": 29,
-    "uniqueVisitors": 8
+    "totalVisits": 30,
+    "uniqueVisitors": 9
   },
   "globalButtons": {
     "agendar-introducao": {
-      "count": 2,
+      "count": 3,
       "name": "Agendar Sessão (Introdução)"
     },
     "agendar-dificuldades": {
-      "count": 2,
+      "count": 3,
       "name": "Agendar Atendimento (Dificuldades)"
     },
     "agendar-controle": {
-      "count": 1,
+      "count": 2,
       "name": "Agendar Sessão (Controle)"
     },
     "whatsapp-saibamais": {
-      "count": 1,
+      "count": 3,
       "name": "WhatsApp (saibamais)"
+    },
+    "whatsapp-header": {
+      "count": 1,
+      "name": "Entrar em contato (Header)"
     }
   },
   "byDate": {
@@ -42,6 +46,19 @@
         "whatsapp-saibamais": 1,
         "agendar-introducao": 1,
         "agendar-dificuldades": 1
+      }
+    },
+    "2025-05-24": {
+      "visits": {
+        "pageViews": 1,
+        "uniqueVisitors": 1
+      },
+      "buttons": {
+        "whatsapp-header": 1,
+        "agendar-introducao": 1,
+        "agendar-dificuldades": 1,
+        "agendar-controle": 1,
+        "whatsapp-saibamais": 2
       }
     }
   }

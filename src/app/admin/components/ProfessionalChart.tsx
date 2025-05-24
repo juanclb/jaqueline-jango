@@ -1,7 +1,7 @@
 import React from "react";
 import {
-  BarChart,
-  Bar,
+  AreaChart,
+  Area,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -32,114 +32,79 @@ const ProfessionalChart: React.FC<ProfessionalChartProps> = ({
   barColor = "#9D4931",
   isLoading = false,
 }) => {
+  // Verificar se há dados
+  if (!data || data.length === 0) {
+    return (
+      <div className="w-full" style={{ height }}>
+        <div className="flex items-center justify-center h-full">
+          <div className="text-center">
+            <p className="text-gray-500 text-sm">Nenhum dado disponível</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Formatar dados para o gráfico
   const formattedData = data.map((item) => ({
     name: item.label,
     value: item.value,
-    subLabel: item.subLabel || "",
   }));
 
+  // Calcular domínio do YAxis com gap estético
+  const values = formattedData.map((item) => item.value);
+  const maxValue = Math.max(...values);
+  const minValue = Math.min(...values);
+
+  // Calcular gap (25% do valor máximo ou pelo menos 2 unidades)
+  const gap = Math.max(maxValue * 0.25, 1);
+  const yAxisMax = maxValue + gap;
+  const yAxisMin = Math.max(0, minValue - gap * 0.2); // Gap menor na parte inferior
+
+  // Loading state
   if (isLoading) {
     return (
-      <div
-        style={{ height }}
-        className="flex flex-col items-center justify-center"
-      >
-        <div className="animate-spin h-10 w-10 border-4 border-[#9D4931] border-t-transparent rounded-full"></div>
-        <p className="mt-3 text-sm text-gray-500">Carregando gráfico...</p>
+      <div className="w-full" style={{ height }}>
+        <div className="flex items-center justify-center h-full">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900"></div>
+        </div>
       </div>
     );
   }
-
-  if (!data.length) {
-    return (
-      <div
-        style={{ height }}
-        className="flex flex-col items-center justify-center bg-gray-50 rounded-xl"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-10 h-10 text-gray-300"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          strokeWidth="1"
-        >
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-          <line x1="3" y1="9" x2="21" y2="9" />
-          <line x1="9" y1="21" x2="9" y2="9" />
-        </svg>
-        <p className="mt-3 text-gray-500 font-medium text-sm">
-          Sem dados disponíveis
-        </p>
-      </div>
-    );
-  }
-
-  // Ajuste dinâmico da rotação e tamanho da fonte baseado na quantidade de barras
-  const tickAngle = data.length > 30 ? -75 : data.length > 15 ? -45 : 0;
-  const tickFontSize = data.length > 30 ? 10 : 12;
-  const barSize = data.length > 30 ? 6 : data.length > 15 ? 12 : 20;
 
   return (
     <div className="w-full">
       {(title || subtitle) && (
-        <div className="mb-5">
+        <div className="mb-4">
           {title && (
-            <h2 className="text-lg font-semibold text-[#505568]">{title}</h2>
+            <h3 className="text-lg font-semibold text-gray-800">{title}</h3>
           )}
-          {subtitle && (
-            <p className="text-sm text-gray-500 leading-tight">{subtitle}</p>
-          )}
+          {subtitle && <p className="text-sm text-gray-600 mt-1">{subtitle}</p>}
         </div>
       )}
 
       <div style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
-          <BarChart
+          <AreaChart
             data={formattedData}
-            margin={{ top: 10, right: 20, left: 10, bottom: 80 }}
+            margin={{
+              top: 10,
+              right: 30,
+              left: 0,
+              bottom: 0,
+            }}
           >
-            <CartesianGrid
-              strokeDasharray="3 3"
-              vertical={false}
-              opacity={0.1}
-            />
-            <XAxis
-              dataKey="name"
-              angle={tickAngle}
-              textAnchor={tickAngle ? "end" : "middle"}
-              interval={0}
-              height={tickAngle ? 80 : 50}
-              tick={{
-                fontSize: tickFontSize,
-                fill: "#4B5563",
-                fontWeight: 500,
-              }}
-            />
-            <YAxis
-              tick={{ fontSize: 12, fill: "#6B7280" }}
-              tickFormatter={(val) => val.toLocaleString()}
-              width={60}
-            />
-            <Tooltip
-              formatter={(val: number) => val.toLocaleString()}
-              contentStyle={{
-                borderRadius: 8,
-                border: "1px solid #e5e7eb",
-                padding: "8px 12px",
-                backgroundColor: "#fff",
-              }}
-              labelStyle={{ fontWeight: 600, color: "#374151" }}
-              cursor={{ fill: "#f3f4f6", opacity: 0.4 }}
-            />
-            <Bar
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis domain={[yAxisMin, yAxisMax]} />
+            <Tooltip />
+            <Area
+              type="monotone"
               dataKey="value"
+              stroke={barColor}
               fill={barColor}
-              radius={[6, 6, 0, 0]}
-              animationDuration={600}
-              barSize={barSize}
             />
-          </BarChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
     </div>

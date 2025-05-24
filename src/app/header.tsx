@@ -3,12 +3,28 @@
 import React from "react";
 import { useState } from "react";
 import OriginalSizeImage from "./OriginalSizeImage";
+import { recordContactClick } from "../utils/client-analytics";
 
 export const GPTHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleClick = () => {
+    // Registrar o clique nos analytics
+    recordContactClick(
+      "whatsapp-header",
+      "Entrar em contato (Header)",
+      "header"
+    );
+
+    // Abrir a URL (por padrão, WhatsApp)
+    window.open(
+      "https://wa.me/5519971722368?text=Ol%C3%A1!%20Vi%20sua%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20%E2%80%8B%E2%80%8B%E2%9D%A4%EF%B8%8F",
+      "_blank"
+    );
   };
 
   return (
@@ -50,7 +66,10 @@ export const GPTHeader = () => {
             >
               Sobre mim
             </a>
-            <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]">
+            <button
+              className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer transition-all duration-300 hover:bg-[#B85738] hover:shadow-lg hover:transform hover:scale-[1.02]"
+              onClick={handleClick}
+            >
               <a className="text-[#FFFFFF]">Agendar sessão</a>
             </button>
           </div>
@@ -114,7 +133,10 @@ export const GPTHeader = () => {
               </a>
             </li>
             <li>
-              <button className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer text-[#FFF]">
+              <button
+                className="p-4 px-8 bg-[#9D4931] rounded-2xl cursor-pointer text-[#FFF]"
+                onClick={handleClick}
+              >
                 <a href="">Agendar sessão</a>
               </button>
             </li>
