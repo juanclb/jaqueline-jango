@@ -2,7 +2,6 @@
 
 # dependencies
 /data
-/data/analytics.json
 /node_modules
 /.pnp
 .pnp.*
