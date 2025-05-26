@@ -31,7 +31,7 @@ const First = () => {
               </p>
               <p className="font-semibold mt-4 md:mt-6 text-xl md:text-xl text-[#9D4931]">
                 Te ajudo a alcançar uma vida mais leve, estável e feliz com as
-                ferramentas da Psicologia
+                ferramentas da Psicologia.
               </p>
               <p className="text-lg text-[#A3867E] mt-4">
                 Conheça mais sobre como a terapia com a abordagem na Análise do
