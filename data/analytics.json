@@ -1,7 +1,7 @@
 {
   "global": {
-    "totalVisits": 30,
-    "uniqueVisitors": 9
+    "totalVisits": 41,
+    "uniqueVisitors": 10
   },
   "globalButtons": {
     "agendar-introducao": {
@@ -50,7 +50,7 @@
     },
     "2025-05-24": {
       "visits": {
-        "pageViews": 1,
+        "pageViews": 10,
         "uniqueVisitors": 1
       },
       "buttons": {
@@ -60,6 +60,13 @@
         "agendar-controle": 1,
         "whatsapp-saibamais": 2
       }
+    },
+    "2025-05-26": {
+      "visits": {
+        "pageViews": 2,
+        "uniqueVisitors": 1
+      },
+      "buttons": {}
     }
   }
 }

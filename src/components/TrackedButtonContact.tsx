@@ -65,7 +65,7 @@ interface WhatsAppButtonProps {
  */
 export const WhatsAppButton: React.FC<WhatsAppButtonProps> = ({
   sectionId,
-  url = `https://wa.me/5519971722368?text=Ol%C3%A1!%20Me%20interessei%20pela%20sua%20abordagem%20e%20quero%20agendar%20uma%20sess%C3%A3o%20%F0%9F%A4%8D`,
+  url = `https://wa.me/5519971722368?text=Ol%C3%A1!%20Me%20interessei%20pela%20sua%20abordagem%20e%20quero%20agendar%20uma%20sess%C3%A3o.`,
   buttonId = `whatsapp-${sectionId}`,
   buttonName = `WhatsApp (${sectionId})`,
   className = "text-xl text-[#E9E7DB] p-4 w-[100%] md:w-[100%] bg-[#505568] rounded-3xl cursor-pointer transition-all duration-300 hover:bg-[#5E6377] hover:shadow-lg hover:transform hover:scale-[1.02]",

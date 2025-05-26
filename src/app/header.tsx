@@ -22,7 +22,7 @@ export const GPTHeader = () => {
 
     // Abrir a URL (por padrão, WhatsApp)
     window.open(
-      "https://wa.me/5519971722368?text=Ol%C3%A1!%20Vi%20sua%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20%E2%80%8B%E2%80%8B%E2%9D%A4%EF%B8%8F",
+      "https://wa.me/5519971722368?text=Ol%C3%A1!%20Vi%20sua%20p%C3%A1gina%20e%20gostaria%20de%20agendar%20uma%20sess%C3%A3o.",
       "_blank"
     );
   };
