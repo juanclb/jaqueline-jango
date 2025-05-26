@@ -3,6 +3,7 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   /* config options here */
   // add images.pexels.com to the allowed domains
+  output: "standalone",
   images: {
     domains: ["figma.com", "s3-alpha-sig.figma.com", "images.pexels.com"],
     remotePatterns: [
