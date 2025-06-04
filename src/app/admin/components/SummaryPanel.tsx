@@ -1,3 +1,4 @@
+// components/SummaryPanel.tsx
 import React, { useState } from "react";
 import ProfessionalChart from "./ProfessionalChart";
 
@@ -7,10 +8,6 @@ interface SummaryPanelProps {
   isRefreshing: boolean;
 }
 
-/**
- * Painel de resumo com visão geral das estatísticas
- * Usando Recharts para visualizações profissionais
- */
 const SummaryPanel: React.FC<SummaryPanelProps> = ({
   data,
   dateRange,
@@ -18,26 +15,44 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({
 }) => {
   const [showInfo, setShowInfo] = useState<string | null>(null);
 
-  // Extrair dados de forma segura
+  // Extrair dados da nova estrutura
   const global = data?.global || { totalVisits: 0, uniqueVisitors: 0 };
-  const globalButtons = data?.globalButtons || {};
+  const buttons = data?.buttons || [];
+  const referrers = data?.referrers || [];
   const visitChartData = data?.visitChartData || [];
   const uniqueVisitorsChartData = data?.uniqueVisitorsChartData || [];
-  const totalButtonClicks = data?.totalButtonClicks || 0;
   const currentPeriodTotal = data?.currentPeriodTotal || 0;
   const dailyAverage = data?.dailyAverage || 0;
   const visitsGrowthRate = data?.visitsGrowthRate || 0;
   const conversionRate = data?.conversionRate || 0;
   const topDay = data?.topDay || { date: "", visits: 0 };
 
+  // Calcular total de cliques em botões
+  const totalButtonClicks = buttons.reduce(
+    (sum: number, button: any) => sum + (button.totalClicks || 0),
+    0
+  );
+
   // Ordenar botões por contagem
-  const sortedButtons = Object.entries(globalButtons)
-    .map(([id, data]: [string, any]) => ({
-      id,
-      name: data.name || "Botão sem nome",
-      count: data.count || 0,
+  interface ButtonData {
+    buttonId: string;
+    buttonName?: string;
+    totalClicks?: number;
+  }
+
+  interface SortedButton {
+    id: string;
+    name: string;
+    count: number;
+  }
+
+  const sortedButtons: SortedButton[] = buttons
+    .map((button: ButtonData) => ({
+      id: button.buttonId,
+      name: button.buttonName || "Botão sem nome",
+      count: button.totalClicks || 0,
     }))
-    .sort((a, b) => b.count - a.count);
+    .sort((a: SortedButton, b: SortedButton) => b.count - a.count);
 
   return (
     <>
@@ -120,14 +135,13 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({
 
               {showInfo === "visits" && (
                 <div className="mb-3 p-3 bg-gray-50 rounded-lg text-sm text-gray-600">
-                  Contagem total de acessos ao site desde o início do
-                  monitoramento.
+                  Contagem total de acessos ao site no período selecionado.
                 </div>
               )}
 
               <div className="flex items-end justify-between">
                 <p className="text-3xl font-bold text-[#505568]">
-                  {global.totalVisits.toLocaleString()}
+                  {currentPeriodTotal.toLocaleString()}
                 </p>
 
                 <div
@@ -764,6 +778,117 @@ const SummaryPanel: React.FC<SummaryPanelProps> = ({
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 className="ml-2"
+              >
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                <polyline points="15 3 21 3 21 9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </button>
+          </div>
+        )}
+      </div>
+
+      {/* Nova seção: Top Origens */}
+      <div className="bg-white rounded-2xl shadow-sm p-6 border border-gray-100 hover:shadow-md transition-all duration-300 mb-8">
+        <div className="flex justify-between items-center mb-6">
+          <h3 className="text-xl font-semibold text-[#505568]">
+            Principais Origens de Tráfego
+          </h3>
+          <div className="flex items-center px-3 py-1 bg-[#F5F3E7] rounded-full">
+            <svg
+              className="w-4 h-4 text-[#9D4931] mr-1"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              viewBox="0 0 24 24"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="2" y1="12" x2="22" y2="12"></line>
+              <path d="m20.49 7a9 9 0 0 0-8.49-5 9 9 0 0 0-8.49-5"></path>
+              <path d="m3.51 17a9 9 0 0 0 8.49 5 9 9 0 0 0 8.49 5"></path>
+            </svg>
+            <span className="text-sm font-medium text-[#9D4931]">
+              {referrers?.length || 0} origens identificadas
+            </span>
+          </div>
+        </div>
+
+        {referrers?.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {referrers.slice(0, 6).map((referrer: any, index: number) => (
+              <div
+                key={referrer.referrer}
+                className="bg-gray-50 rounded-xl p-4 hover:shadow-sm transition-all duration-300"
+              >
+                <div className="flex justify-between items-start mb-3">
+                  <div className="flex-1">
+                    <h4 className="font-medium text-[#505568] mb-1 text-base">
+                      {referrer.referrer === "direct"
+                        ? "Tráfego Direto"
+                        : referrer.referrer}
+                    </h4>
+                    <p className="text-sm text-gray-500">
+                      {referrer.count.toLocaleString()} visitas
+                    </p>
+                  </div>
+                  <div className="ml-2 flex items-center px-2 py-1 bg-white rounded-full shadow-sm">
+                    <span className="text-base font-semibold text-[#505568]">
+                      {referrer.percentage.toFixed(1)}%
+                    </span>
+                  </div>
+                </div>
+
+                <div className="w-full h-3 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${Math.min(referrer.percentage, 100)}%`,
+                      background: `linear-gradient(90deg, ${
+                        index % 3 === 0
+                          ? "#9D4931"
+                          : index % 3 === 1
+                            ? "#69735B"
+                            : "#505568"
+                      } 0%, ${
+                        index % 3 === 0
+                          ? "#B85738"
+                          : index % 3 === 1
+                            ? "#91A07B"
+                            : "#6B7288"
+                      } 100%)`,
+                    }}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-8">
+            <div className="text-gray-300 mb-4 text-4xl">🌐</div>
+            <p className="text-gray-600 text-lg font-medium mb-2">
+              Nenhuma origem identificada
+            </p>
+            <p className="text-gray-500">
+              Os dados de origem serão exibidos quando houver visitas rastreadas
+            </p>
+          </div>
+        )}
+
+        {referrers?.length > 6 && (
+          <div className="mt-6 text-center">
+            <button
+              onClick={() => {
+                /* Navegar para origens */
+              }}
+              className="inline-flex items-center text-base font-medium text-[#9D4931] hover:text-[#B85738] transition-colors"
+            >
+              Ver todas as {referrers.length} origens
+              <svg
+                className="ml-2 w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
               >
                 <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                 <polyline points="15 3 21 3 21 9"></polyline>

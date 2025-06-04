@@ -24,12 +24,15 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
   const dateOptions = [
     { label: "Últimos 7 dias", value: "7days" },
     { label: "Últimos 30 dias", value: "30days" },
+    { label: "Últimos 90 dias", value: "90days" },
   ];
 
   const tabs = [
     { label: "Resumo", value: "resumo", icon: <BarIcon /> },
     { label: "Visitas", value: "visitas", icon: <EyeIcon /> },
     { label: "Contatos", value: "contatos", icon: <ChatIcon /> },
+    { label: "Origens", value: "origens", icon: <GlobeIcon /> },
+    { label: "Detalhes", value: "detalhes", icon: <SearchIcon /> },
   ];
 
   return (
@@ -46,7 +49,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
                 Painel de Administração
               </h1>
               <p className="text-sm text-gray-500 leading-none">
-                Estatísticas do site
+                Analytics com origem e cliques detalhados
               </p>
             </div>
           </div>
@@ -122,7 +125,7 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
               <button
                 key={value}
                 onClick={() => setActiveView(value)}
-                className={`flex items-center gap-2 py-3 px-1 text-base font-medium transition relative ${
+                className={`flex items-center gap-2 py-3 px-1 text-base font-medium transition relative whitespace-nowrap ${
                   activeView === value
                     ? "text-[#9D4931] border-b-2 border-[#9D4931]"
                     : "text-gray-500 hover:text-gray-800"
@@ -138,6 +141,35 @@ const NavigationHeader: React.FC<NavigationHeaderProps> = ({
     </header>
   );
 };
+
+// Ícones (mantendo os existentes e adicionando novos)
+const GlobeIcon = () => (
+  <svg
+    className="w-5 h-5"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <circle cx="12" cy="12" r="10"></circle>
+    <line x1="2" y1="12" x2="22" y2="12"></line>
+    <path d="m20.49 7a9 9 0 0 0-8.49-5 9 9 0 0 0-8.49 5"></path>
+    <path d="m3.51 17a9 9 0 0 0 8.49 5 9 9 0 0 0 8.49-5"></path>
+  </svg>
+);
+
+const SearchIcon = () => (
+  <svg
+    className="w-5 h-5"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <circle cx="11" cy="11" r="8"></circle>
+    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+  </svg>
+);
 
 // Icons
 const CalendarIcon = () => (

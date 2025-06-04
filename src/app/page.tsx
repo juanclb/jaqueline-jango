@@ -12,12 +12,12 @@ import { BiSolidRightArrow } from "react-icons/bi";
 import { IoIosArrowDown } from "react-icons/io";
 
 import GPTHeader from "./header.tsx";
-import OriginalSizeImage from "./OriginalSizeImage.tsx";
-import SectionTracker from "../components/SectionTracker.tsx";
+import OriginalSizeImage from "../components/OriginalSizeImage.tsx";
 import TrackedContactButton, {
   ScheduleButton,
   WhatsAppButton,
 } from "../components/TrackedButtonContact.tsx";
+import { usePageTracking } from "../hooks/usePageTracking.tsx";
 
 const First = () => {
   return (
@@ -411,6 +411,8 @@ const Seventh = () => {
 };
 
 export default function Home() {
+  usePageTracking(); // Rastreia automaticamente
+
   return (
     <>
       <main className={`h-screen`}>
@@ -444,7 +446,6 @@ export default function Home() {
             }),
           }}
         />
-        <SectionTracker />
         <header>
           <GPTHeader />
         </header>
@@ -474,11 +475,12 @@ export default function Home() {
               <a className="text-center whitespace-pre-line">
                 Copyright © 2025{"\n"}Jaqueline Jango - Psicóloga
               </a>
-              <a href="tel:+5519991999068">(19) 99199-9068</a>
+              <a href="tel:+5519971722368">(19) 97172-2368</a>
               <button
                 onClick={() =>
                   window.open("https://instagram.com/jaquejango", "_blank")
                 }
+                className="cursor-pointer"
               >
                 @jaquejango
               </button>

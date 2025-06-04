@@ -1,58 +1,44 @@
 import { formatDate, formatDateKey, getWeekdayName } from "./dateFormatter";
-import { ChartDataPoint } from "../types/chartTypes";
 
-/**
- * Processa os dados de analytics para exibição nos painéis
- */
 export const processAnalyticsData = (analyticsData: any, dateRange: string) => {
-  // Garantindo que os objetos necessários existam
   const {
-    global = { totalVisits: 0, uniqueVisitors: 0 },
-    globalButtons = {},
-    byDate = {},
+    global = { totalVisits: 0, uniqueVisitors: 0 }, // Agora vem calculado da API
+    daily = {},
+    referrers = [],
+    buttons = [],
   } = analyticsData;
 
   // Obter datas para o período selecionado
   const dateRangeDates = getDateRange(dateRange);
   const dateRangeDateKeys = dateRangeDates.map(formatDateKey);
 
-  // Preparar dados para o gráfico de visitas
+  // Preparar dados para gráficos usando a estrutura correta
   const visitChartData = prepareDateChartData(
     dateRangeDates,
-    byDate,
+    daily,
     "pageViews",
     dateRange
   );
   const uniqueVisitorsChartData = prepareDateChartData(
     dateRangeDates,
-    byDate,
+    daily,
     "uniqueVisitors",
     dateRange
   );
 
-  // Calcular estatísticas para botões
-  const totalButtonClicks = calculateTotalButtonClicks(globalButtons);
-  const buttonsWithChartData = prepareButtonsChartData(
-    globalButtons,
-    dateRangeDates,
-    byDate,
-    dateRange
-  );
-
-  // Calcular totais para comparação
+  // Calcular estatísticas do período
   const currentPeriodTotal = calculatePeriodTotal(
     dateRangeDateKeys,
-    byDate,
+    daily,
     "pageViews"
   );
   const previousPeriodDateKeys = getPreviousPeriodDateKeys(dateRange);
   const previousPeriodTotal = calculatePeriodTotal(
     previousPeriodDateKeys,
-    byDate,
+    daily,
     "pageViews"
   );
 
-  // Calculando taxas e percentuais
   const visitsGrowthRate = calculateGrowthRate(
     currentPeriodTotal,
     previousPeriodTotal
@@ -67,20 +53,25 @@ export const processAnalyticsData = (analyticsData: any, dateRange: string) => {
   );
 
   // Encontrar o dia com mais visitas
-  const topDay = findTopDay(dateRangeDates, byDate);
+  const topDay = findTopDay(dateRangeDates, daily);
 
-  // Processar stats por data para a tabela
-  const dateStats = processDateStats(dateRangeDates, byDate, topDay);
+  // Processar stats por data
+  const dateStats = processDateStats(dateRangeDates, daily, topDay);
 
-  return {
+  // Calcular total de cliques em botões
+  const totalButtonClicks = buttons.reduce(
+    (sum: number, button: any) => sum + (button.totalClicks || 0),
+    0
+  );
+  const result = {
     global,
-    globalButtons,
-    byDate,
+    daily,
+    referrers,
+    buttons,
     dateRangeDates,
     visitChartData,
     uniqueVisitorsChartData,
     totalButtonClicks,
-    buttonsWithChartData,
     currentPeriodTotal,
     previousPeriodTotal,
     visitsGrowthRate,
@@ -89,17 +80,61 @@ export const processAnalyticsData = (analyticsData: any, dateRange: string) => {
     topDay,
     dateStats,
   };
+
+  return result;
 };
 
-/**
- * Obter um array de datas para o período selecionado
- */
+// Preparar dados para gráficos usando a estrutura correta
+const prepareDateChartData = (
+  dates: Date[],
+  daily: any,
+  field: "pageViews" | "uniqueVisitors",
+  dateRange: string
+) => {
+  return dates.map((date) => {
+    const dateKey = formatDateKey(date);
+    const dateStats = daily[dateKey];
+
+    // Usar a estrutura correta: daily[date].visits.pageViews
+    const value = dateStats?.visits?.[field] || 0;
+
+    let label = "";
+    if (dateRange === "7days") {
+      label = formatDate(date).split("/").slice(0, 2).join("/");
+    } else if (dateRange === "30days") {
+      label = formatDate(date).split("/").slice(0, 2).join("/");
+    } else {
+      const day = date.getDate();
+      if (day === 1 || day % 10 === 0) {
+        label = formatDate(date).split("/").slice(0, 2).join("/");
+      } else {
+        label = date.getDate().toString();
+      }
+    }
+
+    return { value, label };
+  });
+};
+
+// Calcular total para um período usando estrutura correta
+const calculatePeriodTotal = (
+  dateKeys: string[],
+  daily: any,
+  field: "pageViews" | "uniqueVisitors"
+): number => {
+  return dateKeys.reduce((total, dateKey) => {
+    const dateStats = daily[dateKey];
+    const value = dateStats?.visits?.[field] || 0;
+    return total + value;
+  }, 0);
+};
+
+// Resto das funções permanecem iguais...
 const getDateRange = (dateRange: string): Date[] => {
   const dates: Date[] = [];
   const today = new Date();
 
   let days = 7;
-
   switch (dateRange) {
     case "7days":
       days = 7;
@@ -123,15 +158,11 @@ const getDateRange = (dateRange: string): Date[] => {
   return dates;
 };
 
-/**
- * Obter as chaves de data do período anterior
- */
 const getPreviousPeriodDateKeys = (dateRange: string): string[] => {
   const keys: string[] = [];
   const today = new Date();
 
   let days = 7;
-
   switch (dateRange) {
     case "7days":
       days = 7;
@@ -148,129 +179,23 @@ const getPreviousPeriodDateKeys = (dateRange: string): string[] => {
 
   for (let i = days - 1; i >= 0; i--) {
     const date = new Date();
-    date.setDate(today.getDate() - i - days); // Período anterior
+    date.setDate(today.getDate() - i - days);
     keys.push(formatDateKey(date));
   }
 
   return keys;
 };
 
-/**
- * Preparar dados para gráficos baseados em datas
- */
-const prepareDateChartData = (
-  dates: Date[],
-  byDate: any,
-  field: "pageViews" | "uniqueVisitors",
-  dateRange: string
-): ChartDataPoint[] => {
-  return dates.map((date) => {
-    const dateKey = formatDateKey(date);
-    const dateStats = byDate[dateKey];
-    const value = dateStats?.visits?.[field] || 0;
-
-    // Formatar rótulos com base no período selecionado
-    let label = "";
-    let subLabel = "";
-
-    if (dateRange === "7days") {
-      // Para 7 dias, mostrar dia/mês e dia da semana
-      label = formatDate(date).split("/").slice(0, 2).join("/");
-      subLabel = date.toLocaleDateString("pt-BR", { weekday: "short" });
-    } else if (dateRange === "30days") {
-      // Para 30 dias, mostrar apenas dia/mês
-      label = formatDate(date).split("/").slice(0, 2).join("/");
-    } else {
-      // Para 90 dias, mostrar dia/mês nos inícios de mês ou a cada 10 dias
-      const day = date.getDate();
-      if (day === 1 || day % 10 === 0) {
-        label = formatDate(date).split("/").slice(0, 2).join("/");
-      } else {
-        label = date.getDate().toString();
-      }
-    }
-
-    return {
-      value,
-      label,
-      subLabel,
-    };
-  });
-};
-
-/**
- * Calcular o total de cliques em botões
- */
-const calculateTotalButtonClicks = (globalButtons: any): number => {
-  return Object.values(globalButtons || {}).reduce(
-    (sum: number, button: any) => sum + button.count,
-    0
-  );
-};
-
-/**
- * Preparar dados de gráficos para botões
- */
-const prepareButtonsChartData = (
-  globalButtons: any,
-  dates: Date[],
-  byDate: any,
-  dateRange: string
-): any[] => {
-  return Object.entries(globalButtons || {}).map(
-    ([id, data]: [string, any]) => {
-      if (id === "pageViews" || id === "uniqueVisitors") {
-        const chartData = prepareDateChartData(dates, byDate, id, dateRange);
-        return {
-          ...data,
-          id,
-          chartData,
-        };
-      }
-      return { ...data, id, chartData: [] };
-
-      // return {
-      //   ...data,
-      //   id,
-      //   chartData,
-      // };
-    }
-  );
-};
-
-/**
- * Calcular total para um período
- */
-const calculatePeriodTotal = (
-  dateKeys: string[],
-  byDate: any,
-  field: "pageViews" | "uniqueVisitors"
-): number => {
-  return dateKeys.reduce((total, dateKey) => {
-    const dateStats = byDate[dateKey];
-    return total + (dateStats?.visits?.[field] || 0);
-  }, 0);
-};
-
-/**
- * Calcular taxa de crescimento
- */
 const calculateGrowthRate = (current: number, previous: number): number => {
   if (previous === 0) return current > 0 ? 100 : 0;
   return ((current - previous) / previous) * 100;
 };
 
-/**
- * Calcular média diária
- */
 const calculateDailyAverage = (total: number, days: number): number => {
   if (days === 0) return 0;
   return total / days;
 };
 
-/**
- * Calcular taxa de conversão
- */
 const calculateConversionRate = (
   uniqueVisitors: number,
   totalVisits: number
@@ -279,16 +204,13 @@ const calculateConversionRate = (
   return (uniqueVisitors / totalVisits) * 100;
 };
 
-/**
- * Encontrar o dia com mais visitas
- */
-const findTopDay = (dates: Date[], byDate: any): any => {
+const findTopDay = (dates: Date[], daily: any): any => {
   let maxVisits = 0;
   let topDate = "";
 
   dates.forEach((date) => {
     const dateKey = formatDateKey(date);
-    const dateStats = byDate[dateKey];
+    const dateStats = daily[dateKey];
     const visits = dateStats?.visits?.pageViews || 0;
 
     if (visits > maxVisits) {
@@ -309,17 +231,13 @@ const findTopDay = (dates: Date[], byDate: any): any => {
   };
 };
 
-/**
- * Processar estatísticas por data para tabela
- */
-const processDateStats = (dates: Date[], byDate: any, topDay: any): any[] => {
+const processDateStats = (dates: Date[], daily: any, topDay: any): any[] => {
   return dates.map((date) => {
     const dateKey = formatDateKey(date);
-    const dateStats = byDate[dateKey];
+    const dateStats = daily[dateKey];
     const visits = dateStats?.visits?.pageViews || 0;
     const unique = dateStats?.visits?.uniqueVisitors || 0;
 
-    // Calcular taxa de conversão
     const conversionRate =
       visits > 0 ? ((unique / visits) * 100).toFixed(1) : "0.0";
 

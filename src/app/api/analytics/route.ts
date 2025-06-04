@@ -1,118 +1,63 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  getStoredData,
-  saveStoredData,
-  formatDateKey,
-  incrementDateCounter,
-  incrementButtonCounter,
-  incrementGlobalButtonCounter,
-} from "@/utils/server-storage";
-import {
-  AnalyticsRequest,
-  AnalyticsResponse,
-  PageViewPayload,
-  ContactClickPayload,
-} from "@/utils/analytics-types";
+import { storage } from "@/lib/analytics-storage";
+import { AnalyticsRequest, AnalyticsApiResponse } from "@/types/analytics";
 
-/**
- * API para obter dados de analytics
- */
-export async function GET(): Promise<NextResponse<any>> {
+export async function POST(request: NextRequest) {
   try {
-    const data = getStoredData();
-    return NextResponse.json(data);
+    const body: AnalyticsRequest = await request.json();
+
+    switch (body.action) {
+      case "pageView":
+        const { isUniqueVisit, referrer: pageReferrer } = body.data as any;
+        storage.recordPageView(isUniqueVisit, pageReferrer);
+        break;
+
+      case "buttonClick":
+        const {
+          buttonId,
+          buttonName,
+          referrer: clickReferrer,
+        } = body.data as any;
+        storage.recordButtonClick(buttonId, buttonName, clickReferrer);
+        break;
+
+      default:
+        return NextResponse.json({ error: "Invalid action" }, { status: 400 });
+    }
+
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Erro ao processar requisição GET de analytics:", error);
+    console.error("Analytics API error:", error);
     return NextResponse.json(
-      { success: false, message: "Erro interno do servidor" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
 }
 
-/**
- * API para registrar eventos de analytics
- */
-export async function POST(
-  req: NextRequest
-): Promise<NextResponse<AnalyticsResponse>> {
+export async function GET(request: NextRequest) {
   try {
-    const body = (await req.json()) as AnalyticsRequest;
-    const { action, data } = body;
+    const { searchParams } = new URL(request.url);
+    const days = parseInt(searchParams.get("days") || "30");
 
-    if (!action || !data) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Requisição inválida: action e data são obrigatórios",
-        },
-        { status: 400 }
-      );
-    }
+    // Obter dados do storage
+    const dailyData = storage.getStats(days);
+    const referrerStats = storage.getReferrerStats(days);
+    const buttonStats = storage.getButtonStats(days);
+    const globalStats = storage.calculateGlobalStats(days);
 
-    const storedData = getStoredData();
-    const todayKey = formatDateKey();
+    const response: AnalyticsApiResponse = {
+      global: globalStats,
+      daily: dailyData,
+      referrers: referrerStats,
+      buttons: buttonStats,
+    };
 
-    switch (action) {
-      case "pageView": {
-        const payload = data as PageViewPayload;
-        const { isUniqueVisit } = payload;
-
-        // Incrementa sempre o contador de visitas
-        storedData.global.totalVisits += 1;
-
-        // Incrementa o contador de visitantes únicos apenas se for uma visita única
-        // Isso é determinado pelo cliente através do sistema de cookies
-        if (isUniqueVisit) {
-          storedData.global.uniqueVisitors += 1;
-        }
-
-        // Atualiza estatísticas por data
-        storedData.byDate = incrementDateCounter(
-          storedData.byDate,
-          todayKey,
-          isUniqueVisit
-        );
-
-        break;
-      }
-
-      case "contactClick": {
-        const payload = data as ContactClickPayload;
-        const { buttonId, buttonName } = payload;
-
-        // Atualiza contadores globais de botões
-        storedData.globalButtons = incrementGlobalButtonCounter(
-          storedData.globalButtons,
-          buttonId,
-          buttonName
-        );
-
-        // Atualiza estatísticas por data
-        storedData.byDate = incrementButtonCounter(
-          storedData.byDate,
-          todayKey,
-          buttonId
-        );
-
-        break;
-      }
-
-      default:
-        return NextResponse.json(
-          { success: false, message: `Ação não reconhecida: ${action}` },
-          { status: 400 }
-        );
-    }
-
-    // Salva os dados atualizados
-    saveStoredData(storedData);
-
-    return NextResponse.json({ success: true });
+    return NextResponse.json(response);
   } catch (error) {
-    console.error("Erro ao processar requisição POST de analytics:", error);
+    console.error("Analytics API error:", error);
     return NextResponse.json(
-      { success: false, message: "Erro interno do servidor" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }

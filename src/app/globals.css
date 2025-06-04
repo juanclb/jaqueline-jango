@@ -21,8 +21,10 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
-  /* Ajuste este valor para corresponder à altura do seu cabeçalho */
+}
+
+[id] {
+  scroll-margin-top: 80px;
 }
 
 body {
@@ -40,10 +42,10 @@ img {
 .bg-image {
   background-image: url('https://agenciaaltitude.com/halflogo.png');
   background-size: 15%;
-    /* Ajusta a imagem para cobrir toda a div */
-    background-position: bottom right;
-    /* Alinha a imagem no lado superior esquerdo */
-    background-repeat: no-repeat;
+  /* Ajusta a imagem para cobrir toda a div */
+  background-position: bottom right;
+  /* Alinha a imagem no lado superior esquerdo */
+  background-repeat: no-repeat;
 }
 
 @media (max-width: 768px) {

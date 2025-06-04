@@ -2,10 +2,11 @@
 
 import React from "react";
 import { useState } from "react";
-import OriginalSizeImage from "./OriginalSizeImage";
-import { recordContactClick } from "../utils/client-analytics";
+import OriginalSizeImage from "../components/OriginalSizeImage";
+import { useAnalytics } from "../lib/analytics-client";
 
 export const GPTHeader = () => {
+  const { recordButtonClick } = useAnalytics();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -14,11 +15,7 @@ export const GPTHeader = () => {
 
   const handleClick = () => {
     // Registrar o clique nos analytics
-    recordContactClick(
-      "whatsapp-header",
-      "Entrar em contato (Header)",
-      "header"
-    );
+    recordButtonClick("whatsapp-header", "Entrar em contato (Header)");
 
     // Abrir a URL (por padrão, WhatsApp)
     window.open(

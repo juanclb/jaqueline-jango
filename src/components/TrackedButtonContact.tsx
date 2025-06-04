@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { recordContactClick } from "../utils/client-analytics";
+import { useAnalytics } from "../lib/analytics-client";
 
 /**
  * Interface para as propriedades do botão de contato rastreado
@@ -23,15 +23,16 @@ interface TrackedContactButtonProps {
 const TrackedContactButton: React.FC<TrackedContactButtonProps> = ({
   buttonId,
   buttonName,
-  sectionId,
   children,
   className,
   url = "https://wa.me/5519971722368",
   onClick,
 }) => {
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const { recordButtonClick } = useAnalytics();
+
+  const handleClick = async (e: React.MouseEvent<HTMLButtonElement>) => {
     // Registrar o clique nos analytics
-    recordContactClick(buttonId, buttonName, sectionId);
+    await recordButtonClick(buttonId, buttonName);
 
     // Executar função onClick personalizada se fornecida
     if (onClick) {
